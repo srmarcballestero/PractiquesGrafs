@@ -20,7 +20,7 @@
  //
 //  Cycle graph to adjacency matrix
 //
- vector<vector<int> >
+ vector<vector<int>>
 	 graphM_cycle(int n)
  {
 	 //  Initialize adjacency matrix	to 0
@@ -31,6 +31,18 @@
 	 CnM[n - 1][0] = CnM[0][n - 1] = 1;
 	 return CnM;
  }
+
+ //
+//  Bipartite complete graph to adjacency matrix
+//
+
+vector<vector<int>>
+  graphM_bipartite_complete(int n1, int n2)
+{
+  //
+}
+
+
 //
 //   COMPLETEU-HO AMB ELS ALTRES GRAFS:
 //   cycle( int n ) n
