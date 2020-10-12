@@ -8,7 +8,7 @@ using namespace std;
 //
 //  Complete graph to adjacency matrix
 //
-vector<vector<int>> graphM_complete (int n)
+vector<vector<int>> graphM_complete (int n
 {
   vector<vector<int>> KnM(n, vector<int>(n, 0));
 
