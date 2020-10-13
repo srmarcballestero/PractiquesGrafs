@@ -89,9 +89,9 @@ vector<vector<int>> graphM_grid (int n1, int n2)
     for (int j = n1; j < n1+n2; ++j)
     {
       int v = i*n2 + j;
-      if (j)
+      if (j > 0)
         Gn1n2M[v][v+1] = Gn1n2M[v+1][v] = 1;
-      if (i)
+      if (i > 0)
         Gn1n2M[v][v+j] = Gn1n2M[v+j][v] = 1;
     }
 
@@ -101,10 +101,10 @@ vector<vector<int>> graphM_grid (int n1, int n2)
 
 int main ()
 {
-  vector<vector<int>> W4 = graphM_wheel(3);
+  vector<vector<int>> W4 = graphM_grid(3,3);
 
-  for (int i = 0; i < 4; ++i) {
-    for (int j = 0; j < 4; ++j)
+  for (int i = 0; i < 6; ++i) {
+    for (int j = 0; j < 6; ++j)
       cout << W4[i][j];
     cout << endl;
   }
