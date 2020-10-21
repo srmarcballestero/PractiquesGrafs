@@ -1,9 +1,14 @@
+// NOM: Marc Ballestero Ribó.
+// GRUP: M1a.
+// DATA d'ENTREGA: 23/10/2020.
+
 #include <iostream>
 #include <fstream>
 #include <vector>
 #include <algorithm>
 
 using namespace std;
+
 
 //
 //  Complete graph to adjacency matrix
