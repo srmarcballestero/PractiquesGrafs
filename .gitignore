@@ -33,3 +33,8 @@
 
 # Logs
 *.valgrind
+
+# Compressed
+*.zip
+*.tar.*
+*.7z
