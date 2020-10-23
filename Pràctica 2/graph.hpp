@@ -1,0 +1,20 @@
+#include <iostream>
+#include <fstream>
+#include <vector>
+#include <algorithm>
+ using namespace std;
+ typedef unsigned int vertex;
+ typedef unsigned int edge;
+ typedef unsigned int index; 
+ typedef unsigned int degree;
+ typedef unsigned int component;
+ typedef unsigned int length;
+ typedef vector<vector<vertex> > graph;
+ graph graph_complete( index n );
+ graph graph_read( string fname );
+ void graph_write(  graph& G, ofstream& fout );
+ component BFS( graph &G );
+ component DFS( graph &G );
+ void Dijkstra( graph &G, vertex sv, ofstream& fout );
+ 
+ 
