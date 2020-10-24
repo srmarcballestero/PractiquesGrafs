@@ -584,7 +584,7 @@ int main ()
   // FILE: G4_3.out
   //
   // Write all automorphisms of G4_3.
-  fout.open("K6_4.out");
+  fout.open("G4_3.out");
   vector<vector<int>> MG4_3 = graphM_grid(4, 3);
   fout << "Graph G4_3:" << endl;
   graphM_write(MG4_3, fout);
