@@ -5,12 +5,13 @@
  using namespace std;
  typedef unsigned int vertex;
  typedef unsigned int edge;
- typedef unsigned int index; 
+ typedef unsigned int index;
  typedef unsigned int degree;
  typedef unsigned int component;
  typedef unsigned int length;
- typedef vector<vector<vertex> > graph;
+ typedef vector<vector<vertex>> graph;
  graph graph_complete( index n );
+ graph graph_bipartite_complete(index n1, index n2);
  graph graph_cycle(index n);
  graph graph_star(index n);
  graph graph_wheel(index n);
@@ -25,6 +26,3 @@
  void chess_Dijkstra(graph& G, index n1, index n2, index i1, index i2, ofstream& fout);
  component BFS_Trees(graph& G, ofstream& fout);
  component DFS_Trees(graph& G, ofstream& fout);
-
- 
- 
