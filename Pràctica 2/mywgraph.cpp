@@ -1,4 +1,4 @@
-// NOM: Marc Ballestero Ribó.
+WG// NOM: Marc Ballestero Ribó.
 // GRUP: M1a.
 // DATA d'ENTREGA: 28/11/2020.
 
@@ -107,4 +107,67 @@ wgraph wgraph_wheel(index n, weight Mw)
   }
 
   return WWn;
+}
+
+//
+//  Read from file fname of weighted edges to weighted adjacencies lists.
+//
+wgraph wgraph_read(string fname)
+{
+  ifstream fin;
+  fin.open(fname.c_str());
+  if (fin.fail()) {
+    cerr << "unable to open file " << fname.c_str() << " for reading" << endl;
+    exit(1);
+  }
+
+  vertex vn;
+  edge en;
+  wgraph WG(vn);
+
+  fin >> vn >> en;
+
+  for (edge e = 0; e < en; ++e) {
+    vertex u, v;
+    weight w;
+    fin >> u >> v >> w;
+    WG[u].push_back(pair<vertex, weight>(v, w));
+    if (u != v)
+      WG[v].push_back(pair<vertex, weight>(u, w));
+  }
+
+  return WG;
+}
+
+//
+//  Write from weighted adjacencies lists (wgraph) to stream
+//  - vertices and edges numbers
+//  - weighted edges
+//  - degrees and sorted degrees
+void wgraph_write(wgraph &WG, ofstream &fout)
+{
+  vertex vn = WG.size();
+  edge en = 0;
+
+  for (vertex v = 0; v < vn; ++v)
+    en += WG[v].size();
+  en /= 2;
+
+  fout << "WGraph with " << vn << " vertices and " << en << " edges" << endl;
+
+  fout << "Weighted adjacencies lists" << endl;
+  for (vertex v = 0; v < vn; ++v) {
+    fout << v << "\t:";
+    for (index i = 0; i < WG[v].size(); ++i)
+      fout << " " << WG[v][i].first << "[" << WG[v][i].second << "] ";
+    fout << endl;
+  }
+  fout << endl;
+
+  fout << "Weighted edges" << endl;
+  for (vertex v = 0; v < vn; ++v)
+    for (index i = 0; i < WG[v].size(); ++i)
+      if (v <= WG[v][i].first)
+        fout << v << "-" << WG[v][i].first << "[" << WG[v][i].second << "] " << endl;
+
 }
