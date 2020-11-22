@@ -11,6 +11,9 @@
  typedef unsigned int length;
  typedef vector<vector<vertex> > graph;
  graph graph_complete( index n );
+ graph graph_cycle(index n);
+ graph graph_star(index n);
+ graph graph_wheel(index n);
  graph graph_read( string fname );
  void graph_write(  graph& G, ofstream& fout );
  component BFS( graph &G );

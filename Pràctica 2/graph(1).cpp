@@ -1,0 +1,141 @@
+#include "graph.h"
+// 
+//  Complete graph with vn vertices to adjacencies lists (graph)
+//
+ graph
+    graph_complete( index n )
+{    
+    vertex vn = n;
+    graph Kn( vn );
+    for( vertex v=0; v<vn; v++) 
+        for( vertex u=v+1; u<vn; u++ ) {
+             Kn[v].push_back( u );
+             Kn[u].push_back( v );
+        } 
+    return Kn;
+}
+
+ //   0  :  1  2  3
+ //   1  :  0  2  3 
+ //   2  :  0  1  3
+ //   3  :  0  1  2
+
+// 
+//  Cycle graph with vn vertices to adjacencies lists (graph)0
+//
+ graph
+     graph_cycle(index n)
+ {
+     vertex vn = n;
+     graph Cn(vn);
+     for (vertex v = 0; v < n-1; v++){
+          Cn[v].push_back(v+1);
+          Cn[v+1].push_back(v);
+     }
+     Cn[n-1].push_back(0);
+     Cn[0].push_back(n-1);
+     return Cn;
+ }
+
+ // 
+ //  Star graph with vn vertices to adjacencies lists (graph)0
+ //
+ graph
+     graph_star(index n)
+ {
+     vertex vn = n+1;
+     graph Sn(vn);
+     for (vertex v = 0; v < n; v++) {
+         //  v-n
+         Sn[v].push_back(n);
+         Sn[n].push_back(v);
+     }
+     return Sn;
+ }
+
+ // 
+ //  Wheel graph with vn vertices to adjacencies lists (graph)0
+ //
+ graph
+     graph_wheel(index n)
+ {
+     vertex vn = n + 1;
+     graph Wn(vn);
+     for (vertex v = 0; v < n - 1; v++) {   
+         Wn[v].push_back(v + 1);
+         Wn[v + 1].push_back(v);
+     }
+     Wn[n - 1].push_back(0);
+     Wn[0].push_back(n - 1);
+     for (vertex v = 0; v < n; v++) {
+         //  v-n
+         Wn[v].push_back(n);
+         Wn[n].push_back(v);
+     }
+     return Wn;
+ }
+
+ //  COMPLETAR
+
+ //  graph_bipartite_complete
+
+ //  graph_king
+
+ //   ...
+
+
+// 
+//  Read from file fname of edges to adjacencies lists (graph)
+//
+ graph 
+	graph_read( string fname )
+{    
+	ifstream fin;
+    fin.open( fname.c_str() );    
+    if( fin.fail() ) {
+        cerr << "unable to open file " << fname.c_str() << " for reading" << endl;
+        exit( 1 );
+    }
+ 	vertex vn;
+    edge en;
+	fin >> vn >> en;
+	graph G( vn );
+    for( edge e=0; e<en; e++ ) {
+         vertex v, u;
+         fin >> v >> u; 
+         G[v].push_back(u);
+         if( u != v ) 
+             G[u].push_back(v);
+	}    
+    return G;
+}
+// 
+//  Write from adjacencies lists (graph) to stream
+//  - vertices and edges numbers
+//  - edges
+  void 
+	graph_write(  graph& G, ofstream& fout )
+{    
+//  Vertices number 
+	vertex vn = G.size();
+//  Count edges number from adjacencies lists
+//  PLEASE CORRECT WHEN THERE ARE LOOPS
+    edge en = 0; 
+    for( vertex v = 0; v < vn; v++ ) 
+         en += G[v].size();
+    en /= 2;
+//  Write edges         
+    fout << "Graph with " << vn << " vertices and " << en << " edges " << endl;
+    fout << "Adjacencies lists" << endl;
+    for( vertex v=0; v<vn; v++ )  {
+		fout << v << "\t:";
+        for( index i=0; i<G[v].size(); i++) 
+            fout << "\t" << G[v][i];
+        fout << endl;
+    }
+    fout << "Edges" << endl;
+    for( vertex v = 0; v < vn; v++ ) 
+        for( index i = 0; i < G[v].size(); i++ ) 
+            if( v <= G[v][i] )
+                fout << v << "-" << G[v][i] << endl;
+}
