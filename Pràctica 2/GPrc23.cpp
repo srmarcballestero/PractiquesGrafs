@@ -166,6 +166,11 @@ int main()
     fout << d << endl;
   fout << endl << "Paths from all vertices reachable from vertex 0: ";
   Dijkstra_Tree(WK10, 0, fout);
+  fout << endl << "KRUSKAL" << endl;
+  fout << KruskalTrees(WK10, fout) << " is the total weight of the minimal trees by Kruskal";
+  fout << endl;
+  fout << endl << "PRIM" << endl;
+  fout << PrimTrees(WK10, fout) << " is the total weight of the minimal trees by Prim";
   fout << endl;
   fout.close();
 
@@ -194,6 +199,13 @@ int main()
     fout << d << endl;
   fout << endl << "Paths from all vertices reachable from vertex 0: ";
   Dijkstra_Tree(WK6_4, 0, fout);
+  fout << endl << "KRUSKAL" << endl;
+  fout << KruskalTrees(WK6_4, fout) << " is the total weight of the minimal trees by Kruskal";
+  fout << endl;
+  fout << endl << "PRIM" << endl;
+  fout << PrimTrees(WK6_4, fout) << " is the total weight of the minimal trees by Prim";
+  fout << endl;
+
   fout << endl;
 
   // WK4_6
@@ -220,6 +232,11 @@ int main()
     fout << d << endl;
   fout << endl << "Paths from all vertices reachable from vertex 0: ";
   Dijkstra_Tree(WK4_6, 0, fout);
+  fout << endl << "KRUSKAL" << endl;
+  fout << KruskalTrees(WK4_6, fout) << " is the total weight of the minimal trees by Kruskal";
+  fout << endl;
+  fout << endl << "PRIM" << endl;
+  fout << PrimTrees(WK4_6, fout) << " is the total weight of the minimal trees by Prim";
   fout << endl;
   fout.close();
 
@@ -248,6 +265,11 @@ int main()
     fout << d << endl;
   fout << endl << "Paths from all vertices reachable from vertex 0: ";
   Dijkstra_Tree(WC10, 0, fout);
+  fout << endl << "KRUSKAL" << endl;
+  fout << KruskalTrees(WC10, fout) << " is the total weight of the minimal trees by Kruskal";
+  fout << endl;
+  fout << endl << "PRIM" << endl;
+  fout << PrimTrees(WC10, fout) << " is the total weight of the minimal trees by Prim";
   fout << endl;
   fout.close();
 
@@ -276,6 +298,11 @@ int main()
     fout << d << endl;
   fout << endl << "Paths from all vertices reachable from vertex 0: ";
   Dijkstra_Tree(WS10, 0, fout);
+  fout << endl << "KRUSKAL" << endl;
+  fout << KruskalTrees(WS10, fout) << " is the total weight of the minimal trees by Kruskal";
+  fout << endl;
+  fout << endl << "PRIM" << endl;
+  fout << PrimTrees(WS10, fout) << " is the total weight of the minimal trees by Prim";
   fout << endl;
   fout.close();
 
@@ -304,6 +331,11 @@ int main()
     fout << d << endl;
   fout << endl << "Paths from all vertices reachable from vertex 0: ";
   Dijkstra_Tree(WW10, 0, fout);
+  fout << endl << "KRUSKAL" << endl;
+  fout << KruskalTrees(WW10, fout) << " is the total weight of the minimal trees by Kruskal";
+  fout << endl;
+  fout << endl << "PRIM" << endl;
+  fout << PrimTrees(WW10, fout) << " is the total weight of the minimal trees by Prim";
   fout << endl;
   fout.close();
 
@@ -332,6 +364,11 @@ int main()
     fout << d << endl;
   fout << endl << "Paths from all vertices reachable from vertex 0: ";
   Dijkstra_Tree(WG0, 0, fout);
+  fout << endl << "KRUSKAL" << endl;
+  fout << KruskalTrees(WG0, fout) << " is the total weight of the minimal trees by Kruskal";
+  fout << endl;
+  fout << endl << "PRIM" << endl;
+  fout << PrimTrees(WG0, fout) << " is the total weight of the minimal trees by Prim";
   fout << endl;
   fout.close();
 
@@ -360,6 +397,11 @@ int main()
     fout << d << endl;
   fout << endl << "Paths from all vertices reachable from vertex 0: ";
   Dijkstra_Tree(WG1, 0, fout);
+  fout << endl << "KRUSKAL" << endl;
+  fout << KruskalTrees(WG1, fout) << " is the total weight of the minimal trees by Kruskal";
+  fout << endl;
+  fout << endl << "PRIM" << endl;
+  fout << PrimTrees(WG1, fout) << " is the total weight of the minimal trees by Prim";
   fout << endl;
   fout.close();
 
@@ -416,6 +458,11 @@ int main()
     fout << d << endl;
   fout << endl << "Paths from all vertices reachable from vertex 0: ";
   Dijkstra_Tree(WG3, 0, fout);
+  fout << endl << "KRUSKAL" << endl;
+  fout << KruskalTrees(WG3, fout) << " is the total weight of the minimal trees by Kruskal";
+  fout << endl;
+  fout << endl << "PRIM" << endl;
+  fout << PrimTrees(WG3, fout) << " is the total weight of the minimal trees by Prim";
   fout << endl;
   fout.close();
 
@@ -447,12 +494,12 @@ int main()
   fout << endl;
   fout.close();
 
-  // Dodecahedron: D12.out
-  fout.open("D12.out");
-  wgraph D12 = wgraph_read("D12.in");
-  wgraph_write(D12, fout);
+  // Dodecahedron: WD.out
+  fout.open("WD.out");
+  wgraph WD = wgraph_read("WD.in");
+  wgraph_write(WD, fout);
   fout << endl << "Distance between first and last vertex: ";
-  d = Dijkstra(D12, 0, D12.size()-1);
+  d = Dijkstra(WD, 0, WD.size()-1);
   if (d == infty)
     fout << "undefined" << endl;
   else
@@ -463,24 +510,29 @@ int main()
   else
     fout << d << endl;
   fout << endl << "Distances from first vertex to all accessible vertices: ";
-  Dijkstra(D12, 0, fout);
+  Dijkstra(WD, 0, fout);
   fout << endl << "Diameter: ";
-  d = Diameter(D12);
+  d = Diameter(WD);
   if (d == infty)
     fout << "undefined." << endl;
   else
     fout << d << endl;
   fout << endl << "Paths from all vertices reachable from vertex 0: ";
-  Dijkstra_Tree(D12, 0, fout);
+  Dijkstra_Tree(WD, 0, fout);
+  fout << endl << "KRUSKAL" << endl;
+  fout << KruskalTrees(WD, fout) << " is the total weight of the minimal trees by Kruskal";
+  fout << endl;
+  fout << endl << "PRIM" << endl;
+  fout << PrimTrees(WD, fout) << " is the total weight of the minimal trees by Prim";
   fout << endl;
   fout.close();
 
-  // Icosahedron: I20.out
-  fout.open("I20.out");
-  wgraph I20 = wgraph_read("I20.in");
-  wgraph_write(I20, fout);
+  // Icosahedron: WI.out
+  fout.open("WI.out");
+  wgraph WI = wgraph_read("WI.in");
+  wgraph_write(WI, fout);
   fout << endl << "Distance between first and last vertex: ";
-  d = Dijkstra(I20, 0, I20.size()-1);
+  d = Dijkstra(WI, 0, WI.size()-1);
   if (d == infty)
     fout << "undefined" << endl;
   else
@@ -491,15 +543,20 @@ int main()
   else
     fout << d << endl;
   fout << endl << "Distances from first vertex to all accessible vertices: ";
-  Dijkstra(I20, 0, fout);
+  Dijkstra(WI, 0, fout);
   fout << endl << "Diameter: ";
-  d = Diameter(I20);
+  d = Diameter(WI);
   if (d == infty)
     fout << "undefined." << endl;
   else
     fout << d << endl;
   fout << endl << "Paths from all vertices reachable from vertex 0: ";
-  Dijkstra_Tree(I20, 0, fout);
+  Dijkstra_Tree(WI, 0, fout);
+  fout << endl << "KRUSKAL" << endl;
+  fout << KruskalTrees(WI, fout) << " is the total weight of the minimal trees by Kruskal";
+  fout << endl;
+  fout << endl << "PRIM" << endl;
+  fout << PrimTrees(WI, fout) << " is the total weight of the minimal trees by Prim";
   fout << endl;
   fout.close();
 
