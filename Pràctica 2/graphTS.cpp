@@ -73,12 +73,9 @@ component BFS_Trees(graph &G, ofstream &fout)
     }
 
   fout << "BFS" << endl;
-  for (vertex v = 0; v < vn; ++v) {
-    fout << "Vertex " << v << ":" << endl;
-    fout << "Index:\t" << BFSind[v] << endl;
-    fout << "Parent:\t" << BFSp[v] << endl;
-    fout << "Depth:\t" << BFSd[v] << endl;
-  }
+  fout << "v\tIndex\tParent\tDepth" << endl;
+  for (vertex v = 0; v < vn; ++v)
+    fout << v << "\t\t" << BFSind[v] << "\t\t\t" << BFSp[v] << "\t\t\t\t" << BFSd[v] << endl;
 
   fout << "Edges" << endl;
   for (vertex v = 0; v < vn; ++v)
@@ -165,12 +162,9 @@ component DFS_Trees(graph &G, ofstream &fout)
     }
 
   fout << "DFS" << endl;
-  for (vertex v = 0; v < vn; ++v) {
-    fout << "Vertex " << v << ":" << endl;
-    fout << "Index:\t" << DFSind[v] << endl;
-    fout << "Parent:\t" << DFSp[v] << endl;
-    fout << "Depth:\t" << DFSd[v] << endl;
-  }
+  fout << "v\tIndex\tParent\tDepth" << endl;
+  for (vertex v = 0; v < vn; ++v)
+    fout << v << "\t\t" << DFSind[v] << "\t\t\t" << DFSp[v] << "\t\t\t\t" << DFSd[v] << endl;
 
   fout << "Edges" << endl;
   for (vertex v = 0; v < vn; ++v)

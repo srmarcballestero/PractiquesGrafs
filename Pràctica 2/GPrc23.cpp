@@ -31,10 +31,8 @@ int main()
   fout << "\nNumber of DFS components: " << DFS_Trees(K6_4, fout) << endl;
   fout << "\nNumber of BFS components: " << BFS_Trees(K6_4, fout) << endl;
   Dijkstra(K6_4, 0, fout);
-  fout.close();
 
   // K4_6
-  fout.open("K4_6.out");
   graph K4_6 = graph_bipartite_complete(6, 4);
   graph_write(K4_6, fout);
   fout << "\nNumber of DFS components: " << DFS_Trees(K4_6, fout) << endl;
@@ -109,7 +107,173 @@ int main()
   // WEIGHTED GRAPHS
   //
 
-  weight d, D, infty = UINT_MAX;
+  weight d, infty = UINT_MAX;
+
+  // WK10
+  fout.open("WK10.out");
+  wgraph WK10 = wgraph_complete(10, 9);
+  wgraph_write(WK10, fout);
+  fout << endl << "Distance between first and last vertex: ";
+  d = Dijkstra(WK10, 0, WK10.size()-1);
+  if (d == infty)
+    fout << "undefined" << endl;
+  else
+    fout << d << endl;
+  fout << "Maximum distance from first vertex: ";
+  if (d == infty)
+    fout << "undefined" << endl;
+  else
+    fout << d << endl;
+  fout << endl << "Distances from first vertex to all accessible vertices: ";
+  Dijkstra(WK10, 0, fout);
+  fout << endl << "Diameter: ";
+  d = Diameter(WK10);
+  if (d == infty)
+    fout << "undefined." << endl;
+  else
+    fout << d << endl;
+  fout << endl << "Paths from all vertices reachable from vertex 0: ";
+  Dijkstra_Tree(WK10, 0, fout);
+  fout << endl;
+  fout.close();
+
+  // WK6_4
+  fout.open("WK6_4.out");
+  wgraph WK6_4 = wgraph_bipartite_complete(6, 4, 9);
+  wgraph_write(WK6_4, fout);
+  fout << endl << "Distance between first and last vertex: ";
+  d = Dijkstra(WK6_4, 0, WK6_4.size()-1);
+  if (d == infty)
+    fout << "undefined" << endl;
+  else
+    fout << d << endl;
+  fout << "Maximum distance from first vertex: ";
+  if (d == infty)
+    fout << "undefined" << endl;
+  else
+    fout << d << endl;
+  fout << endl << "Distances from first vertex to all accessible vertices: ";
+  Dijkstra(WK6_4, 0, fout);
+  fout << endl << "Diameter: ";
+  d = Diameter(WK6_4);
+  if (d == infty)
+    fout << "undefined." << endl;
+  else
+    fout << d << endl;
+  fout << endl << "Paths from all vertices reachable from vertex 0: ";
+  Dijkstra_Tree(WK6_4, 0, fout);
+  fout << endl;
+
+  // WK4_6
+  wgraph WK4_6 = wgraph_bipartite_complete(4, 6, 9);
+  wgraph_write(WK4_6, fout);
+  fout << endl << "Distance between first and last vertex: ";
+  d = Dijkstra(WK4_6, 0, WK4_6.size()-1);
+  if (d == infty)
+    fout << "undefined" << endl;
+  else
+    fout << d << endl;
+  fout << "Maximum distance from first vertex: ";
+  if (d == infty)
+    fout << "undefined" << endl;
+  else
+    fout << d << endl;
+  fout << endl << "Distances from first vertex to all accessible vertices: ";
+  Dijkstra(WK4_6, 0, fout);
+  fout << endl << "Diameter: ";
+  d = Diameter(WK4_6);
+  if (d == infty)
+    fout << "undefined." << endl;
+  else
+    fout << d << endl;
+  fout << endl << "Paths from all vertices reachable from vertex 0: ";
+  Dijkstra_Tree(WK4_6, 0, fout);
+  fout << endl;
+  fout.close();
+
+  // WC10
+  fout.open("WC10.out");
+  wgraph WC10 = wgraph_cycle(10, 9);
+  wgraph_write(WC10, fout);
+  fout << endl << "Distance between first and last vertex: ";
+  d = Dijkstra(WC10, 0, WC10.size()-1);
+  if (d == infty)
+    fout << "undefined" << endl;
+  else
+    fout << d << endl;
+  fout << "Maximum distance from first vertex: ";
+  if (d == infty)
+    fout << "undefined" << endl;
+  else
+    fout << d << endl;
+  fout << endl << "Distances from first vertex to all accessible vertices: ";
+  Dijkstra(WC10, 0, fout);
+  fout << endl << "Diameter: ";
+  d = Diameter(WC10);
+  if (d == infty)
+    fout << "undefined." << endl;
+  else
+    fout << d << endl;
+  fout << endl << "Paths from all vertices reachable from vertex 0: ";
+  Dijkstra_Tree(WC10, 0, fout);
+  fout << endl;
+  fout.close();
+
+  // WS10
+  fout.open("WS10.out");
+  wgraph WS10 = wgraph_star(10, 9);
+  wgraph_write(WS10, fout);
+  fout << endl << "Distance between first and last vertex: ";
+  d = Dijkstra(WS10, 0, WS10.size()-1);
+  if (d == infty)
+    fout << "undefined" << endl;
+  else
+    fout << d << endl;
+  fout << "Maximum distance from first vertex: ";
+  if (d == infty)
+    fout << "undefined" << endl;
+  else
+    fout << d << endl;
+  fout << endl << "Distances from first vertex to all accessible vertices: ";
+  Dijkstra(WS10, 0, fout);
+  fout << endl << "Diameter: ";
+  d = Diameter(WS10);
+  if (d == infty)
+    fout << "undefined." << endl;
+  else
+    fout << d << endl;
+  fout << endl << "Paths from all vertices reachable from vertex 0: ";
+  Dijkstra_Tree(WS10, 0, fout);
+  fout << endl;
+  fout.close();
+
+  // WW10
+  fout.open("WW10.out");
+  wgraph WW10 = wgraph_wheel(10, 9);
+  wgraph_write(WW10, fout);
+  fout << endl << "Distance between first and last vertex: ";
+  d = Dijkstra(WW10, 0, WW10.size()-1);
+  if (d == infty)
+    fout << "undefined" << endl;
+  else
+    fout << d << endl;
+  fout << "Maximum distance from first vertex: ";
+  if (d == infty)
+    fout << "undefined" << endl;
+  else
+    fout << d << endl;
+  fout << endl << "Distances from first vertex to all accessible vertices: ";
+  Dijkstra(WW10, 0, fout);
+  fout << endl << "Diameter: ";
+  d = Diameter(WW10);
+  if (d == infty)
+    fout << "undefined." << endl;
+  else
+    fout << d << endl;
+  fout << endl << "Paths from all vertices reachable from vertex 0: ";
+  Dijkstra_Tree(WW10, 0, fout);
+  fout << endl;
+  fout.close();
 
   // WG0
   fout.open("wgraph0.out");
@@ -129,18 +293,216 @@ int main()
   fout << endl << "Distances from first vertex to all accessible vertices: ";
   Dijkstra(WG0, 0, fout);
   fout << endl << "Diameter: ";
-  D = Diameter(WG0);
-  if (D == infty)
+  d = Diameter(WG0);
+  if (d == infty)
     fout << "undefined." << endl;
   else
-    fout << D << endl;
+    fout << d << endl;
   fout << endl << "Paths from all vertices reachable from vertex 0: ";
   Dijkstra_Tree(WG0, 0, fout);
   fout << endl;
   fout.close();
 
+  // WG1
+  fout.open("wgraph1.out");
+  wgraph WG1 = wgraph_read("wgraph1.in");
+  wgraph_write(WG1, fout);
+  fout << endl << "Distance between first and last vertex: ";
+  d = Dijkstra(WG1, 0, WG1.size()-1);
+  if (d == infty)
+    fout << "undefined" << endl;
+  else
+    fout << d << endl;
+  fout << "Maximum distance from first vertex: ";
+  if (d == infty)
+    fout << "undefined" << endl;
+  else
+    fout << d << endl;
+  fout << endl << "Distances from first vertex to all accessible vertices: ";
+  Dijkstra(WG1, 0, fout);
+  fout << endl << "Diameter: ";
+  d = Diameter(WG1);
+  if (d == infty)
+    fout << "undefined." << endl;
+  else
+    fout << d << endl;
+  fout << endl << "Paths from all vertices reachable from vertex 0: ";
+  Dijkstra_Tree(WG1, 0, fout);
+  fout << endl;
+  fout.close();
+
+  // WG2
+  fout.open("wgraph2.out");
+  wgraph WG2 = wgraph_read("wgraph2.in");
+  wgraph_write(WG2, fout);
+  fout << endl << "Distance between first and last vertex: ";
+  d = Dijkstra(WG2, 0, WG2.size()-1);
+  if (d == infty)
+    fout << "undefined" << endl;
+  else
+    fout << d << endl;
+  fout << "Maximum distance from first vertex: ";
+  if (d == infty)
+    fout << "undefined" << endl;
+  else
+    fout << d << endl;
+  fout << endl << "Distances from first vertex to all accessible vertices: ";
+  Dijkstra(WG2, 0, fout);
+  fout << endl << "Diameter: ";
+  d = Diameter(WG2);
+  if (d == infty)
+    fout << "undefined." << endl;
+  else
+    fout << d << endl;
+  fout << endl << "Paths from all vertices reachable from vertex 0: ";
+  Dijkstra_Tree(WG2, 0, fout);
+  fout << endl;
+  fout.close();
+
+  // WG3
+  fout.open("wgraph3.out");
+  wgraph WG3 = wgraph_read("wgraph3.in");
+  wgraph_write(WG3, fout);
+  fout << endl << "Distance between first and last vertex: ";
+  d = Dijkstra(WG3, 0, WG3.size()-1);
+  if (d == infty)
+    fout << "undefined" << endl;
+  else
+    fout << d << endl;
+  fout << "Maximum distance from first vertex: ";
+  if (d == infty)
+    fout << "undefined" << endl;
+  else
+    fout << d << endl;
+  fout << endl << "Distances from first vertex to all accessible vertices: ";
+  Dijkstra(WG3, 0, fout);
+  fout << endl << "Diameter: ";
+  d = Diameter(WG3);
+  if (d == infty)
+    fout << "undefined." << endl;
+  else
+    fout << d << endl;
+  fout << endl << "Paths from all vertices reachable from vertex 0: ";
+  Dijkstra_Tree(WG3, 0, fout);
+  fout << endl;
+  fout.close();
+
+  // Example 3.2.2. WGraph: WG322
+  fout.open("wgraph322.out");
+  wgraph WG322 = wgraph_read("wgraph322.in");
+  wgraph_write(WG322, fout);
+  fout << endl << "Distance between first and last vertex: ";
+  d = Dijkstra(WG322, 0, WG322.size()-1);
+  if (d == infty)
+    fout << "undefined" << endl;
+  else
+    fout << d << endl;
+  fout << "Maximum distance from first vertex: ";
+  if (d == infty)
+    fout << "undefined" << endl;
+  else
+    fout << d << endl;
+  fout << endl << "Distances from first vertex to all accessible vertices: ";
+  Dijkstra(WG322, 0, fout);
+  fout << endl << "Diameter: ";
+  d = Diameter(WG322);
+  if (d == infty)
+    fout << "undefined." << endl;
+  else
+    fout << d << endl;
+  fout << endl << "Paths from all vertices reachable from vertex 0: ";
+  Dijkstra_Tree(WG322, 0, fout);
+  fout << endl;
+  fout.close();
+
+  // Dodecahedron: D12.out
+  fout.open("D12.out");
+  wgraph D12 = wgraph_read("D12.in");
+  wgraph_write(D12, fout);
+  fout << endl << "Distance between first and last vertex: ";
+  d = Dijkstra(D12, 0, D12.size()-1);
+  if (d == infty)
+    fout << "undefined" << endl;
+  else
+    fout << d << endl;
+  fout << "Maximum distance from first vertex: ";
+  if (d == infty)
+    fout << "undefined" << endl;
+  else
+    fout << d << endl;
+  fout << endl << "Distances from first vertex to all accessible vertices: ";
+  Dijkstra(D12, 0, fout);
+  fout << endl << "Diameter: ";
+  d = Diameter(D12);
+  if (d == infty)
+    fout << "undefined." << endl;
+  else
+    fout << d << endl;
+  fout << endl << "Paths from all vertices reachable from vertex 0: ";
+  Dijkstra_Tree(D12, 0, fout);
+  fout << endl;
+  fout.close();
+
+  // Icosahedron: I20.out
+  fout.open("I20.out");
+  wgraph I20 = wgraph_read("I20.in");
+  wgraph_write(I20, fout);
+  fout << endl << "Distance between first and last vertex: ";
+  d = Dijkstra(I20, 0, I20.size()-1);
+  if (d == infty)
+    fout << "undefined" << endl;
+  else
+    fout << d << endl;
+  fout << "Maximum distance from first vertex: ";
+  if (d == infty)
+    fout << "undefined" << endl;
+  else
+    fout << d << endl;
+  fout << endl << "Distances from first vertex to all accessible vertices: ";
+  Dijkstra(I20, 0, fout);
+  fout << endl << "Diameter: ";
+  d = Diameter(I20);
+  if (d == infty)
+    fout << "undefined." << endl;
+  else
+    fout << d << endl;
+  fout << endl << "Paths from all vertices reachable from vertex 0: ";
+  Dijkstra_Tree(I20, 0, fout);
+  fout << endl;
+  fout.close();
 
 
+  //
+  // CHESSBOARD GRAPHS
+  //
+
+  // King 6x6 graph Kg6_6: distances from (2,0)
+  fout.open("Kg6_6.out");
+  graph Kg6_6 = graph_king(6, 6);
+  chess_graph_write(Kg6_6, 6, 6, fout);
+  chess_Dijkstra(Kg6_6, 6, 6, 2, 0, fout);
+  fout.close();
+
+  // Rook 6x6 graph Rk6_6: distances from (2,0)
+  fout.open("Rk6_6.out");
+  graph Rk6_6 = graph_rook(6, 6);
+  chess_graph_write(Rk6_6, 6, 6, fout);
+  chess_Dijkstra(Rk6_6, 6, 6, 2, 0, fout);
+  fout.close();
+
+  // Bishop 6x6 graph Bp6_6: distances from (2,0)
+  fout.open("Bp6_6.out");
+  graph Bp6_6 = graph_king(6, 6);
+  chess_graph_write(Bp6_6, 6, 6, fout);
+  chess_Dijkstra(Bp6_6, 6, 6, 2, 0, fout);
+  fout.close();
+
+  // Knight 6x6 graph Kt6_6: distances from (2,0)
+  fout.open("Kt6_6.out");
+  graph Kt6_6 = graph_king(6, 6);
+  chess_graph_write(Kt6_6, 6, 6, fout);
+  chess_Dijkstra(Kt6_6, 6, 6, 2, 0, fout);
+  fout.close();
 
   return 0;
 }
