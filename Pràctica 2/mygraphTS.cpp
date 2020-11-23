@@ -37,6 +37,9 @@ component BFS(graph &G)
   return Tn;
 }
 
+//
+// Save BFS trees and send info about vertices and edges to ofstream.
+//
 component BFS_Trees(graph &G, ofstream &fout)
 {
   vertex vn = G.size();
@@ -89,4 +92,133 @@ component BFS_Trees(graph &G, ofstream &fout)
         }
 
   return Tn;
+}
+
+//
+// Recursive function for DFS from v.
+//
+void DFS (graph &G, vector<bool> &DFSl, vertex v)
+{
+  for (index i = 0; i < G[v].size(); ++i)
+    if (!DFSl[G[v][i]]) {
+      DFSl[G[v][i]] = true;
+      DFS(G, DFSl, G[v][i]);
+    }
+}
+
+//
+// Depth first search: returns components/trees number.
+//
+component DFS(graph &G)
+{
+  vertex vn = G.size();
+  component Tn = 0;
+  vector<bool> DFSl(vn, false);
+
+  for (vertex rv = 0; rv < vn; ++rv)
+    if (!DFSl[rv]) {
+      ++Tn;
+      DFSl[rv] = true;
+      DFS(G, DFSl, rv);
+    }
+
+  return Tn;
+}
+
+//
+// Recursive function for DFS from v.
+//
+void DFS_Trees(graph &G, index &DFSn, vector<index> &DFSind, vector<vertex> &DFSp,
+  vector<length> &DFSd, vertex v)
+{
+  vertex vn = G.size();
+
+  for (index i = 0; i < G[v].size(); ++i)
+    if (DFSp[G[v][i]] == vn) {
+      DFSp[G[v][i]] = v;
+      DFSind[G[v][i]] = ++DFSn;
+      DFSd[G[v][i]] = DFSd[v] + 1;
+      DFS_Trees(G, DFSn, DFSind, DFSp, DFSd, G[v][i]);
+    }
+}
+
+//
+// Depth First Search: returns components/trees number.
+//
+component DFS_Trees(graph &G, ofstream &fout)
+{
+  vertex vn = G.size();
+  component Tn = 0;
+
+  vector<vertex> DFSp(vn, vn);
+  vector<index> DFSind(vn);
+  vector<length> DFSd(vn);
+
+  index DFSn = 0;
+  for (vertex rv = 0; rv < vn; ++rv)
+    if (DFSp[rv] == vn) {
+      ++Tn;
+      DFSp[rv] = rv;
+      DFSind[rv] = ++DFSn;
+      DFSd[rv] = 0;
+      DFS_Trees(G, DFSn, DFSind, DFSp, DFSd, rv);
+    }
+
+  fout << "DFS" << endl;
+  for (vertex v = 0; v < vn; ++v) {
+    fout << "Vertex " << v << ":" << endl;
+    fout << "Index:\t" << DFSind[v] << endl;
+    fout << "Parent:\t" << DFSp[v] << endl;
+    fout << "Depth:\t" << DFSd[v] << endl;
+  }
+
+  fout << "Edges" << endl;
+  for (vertex v = 0; v < vn; ++v)
+    for (index i = 0; i < G[v].size(); ++i)
+      if (v <= G[v][i]) {
+        fout << v << "-" << G[v][i];
+        if (DFSp[G[v][i]] == v || DFSp[v] == G[v][i])
+          fout << " IN spanning tree " << endl;
+        else
+          fout << " NOT IN spanning tree" << endl;
+        }
+  return Tn;
+}
+
+//
+//  Minimal path lengths by Dijkstra's method to stream
+//  - Distances to all vertices: lengths of minimal paths
+//
+void Dijkstra (graph &G, vertex sv, ofstream &fout)
+{
+  vertex vn = G.size();
+  vector<bool> Dl(vn, false);
+
+  length infty = UINT_MAX;
+  vector<length> Dd(vn, infty);
+  Dd[sv] = 0;
+
+  vertex mdv = sv;
+  do {
+    Dl[mdv] = true;
+    for (index i = 0; i < G[mdv].size(); ++i)
+      if (Dd[G[mdv][i]] > Dd[mdv]+1)
+        Dd[G[mdv][i]] = Dd[mdv] + 1;
+
+    length md = infty;
+    mdv = vn;
+    for (vertex v = 0; v < vn; ++v)
+      if (md > Dd[v] && !Dl[v]) {
+        md = Dd[v];
+        mdv = v;
+      }
+  } while (mdv < vn);
+
+  fout << "\nDistances from starting vertex " << sv << endl;
+  for (vertex v = 0; v < vn; ++v)
+    if (Dd[v] < infty)
+      fout << v << "\t" << Dd[v] << endl;
+    else
+      fout << v << "\tNot connected" << endl;
+
 }

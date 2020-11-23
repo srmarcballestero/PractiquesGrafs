@@ -94,7 +94,67 @@ graph graph_wheel(index n)
   return Wn;
 }
 
+//
+//  King graph in n1xn2 chessboard: Kgn1n2.
+//
+graph graph_king(index n1, index n2)
+{
+  graph Kgn1n2(n1*n2);
 
+  for (index i1 = 0; i1 < n1; ++i1)
+    for (index i2 = 0; i2 < n2; ++i2) {
+      vertex v = i1*n2 + i2;
+      if (i2 < n2-1) {
+        Kgn1n2[v].push_back(v+1);
+        Kgn1n2[v+1].push_back(v);
+      }
+      if (i1 < n1-1) {
+        Kgn1n2[v].push_back(v+n2);
+        Kgn1n2[v+n2].push_back(v);
+      }
+      if (i1 < n1-1 && i2 < n2-1) {
+        Kgn1n2[v].push_back(v+n2+1);
+        Kgn1n2[v+n2+1].push_back(v);
+      }
+      if (i1 < n1-1 && i2 > 0) {
+        Kgn1n2[v].push_back(v+n2-1);
+        Kgn1n2[v+n2-1].push_back(v);
+      }
+    }
+
+  return Kgn1n2;
+}
+
+//
+// Rook graph in n1xn2 chessboard: Krn1n2.
+//
+graph graph_rook(index n1, index n2)
+{
+  graph Krn1n2(n1*n2);
+
+  for (index i1 = 0; i1 < n1; ++i1)
+    for (index i2 = 0; i2 < n2; ++i2) {
+      vertex v = i1*n2 + i2;
+
+      for (int k = 1; i2+k < n2; ++k) {
+        Krn1n2[v].push_back(v+k);
+        Krn1n2[v+k].push_back(v);
+        ++k;
+      }
+
+      for (int k = 1; i1+k < n1; ++k) {
+        Krn1n2[v].push_back(v + k*n2);
+        Krn1n2[v + k*n2].push_back(v);
+        ++k;
+      }
+    }
+
+  return Krn1n2;
+}
+
+//
+// Knight graph in n1xn2 chessboard: Ktn1n2.
+//
 //
 // Read from file fname of edges to adjacencies lists.
 //
