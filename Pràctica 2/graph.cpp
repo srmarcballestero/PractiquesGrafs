@@ -264,7 +264,6 @@ void graph_write(graph &G, ofstream &fout)
       fout << "\t" << G[v][i];
     fout << endl;
   }
-  fout << endl;
 
   fout << "Edges" << endl;
   for (vertex v = 0; v < vn; ++v)

@@ -73,6 +73,7 @@ component BFS_Trees(graph &G, ofstream &fout)
     }
 
   fout << "BFS" << endl;
+  fout << "Number of BFS components: " << Tn << endl;
   fout << "v\tIndex\tParent\tDepth" << endl;
   for (vertex v = 0; v < vn; ++v)
     fout << v << "\t\t" << BFSind[v] << "\t\t\t" << BFSp[v] << "\t\t\t\t" << BFSd[v] << endl;
@@ -162,6 +163,7 @@ component DFS_Trees(graph &G, ofstream &fout)
     }
 
   fout << "DFS" << endl;
+  fout << "Number of DFS components: " << Tn << endl;
   fout << "v\tIndex\tParent\tDepth" << endl;
   for (vertex v = 0; v < vn; ++v)
     fout << v << "\t\t" << DFSind[v] << "\t\t\t" << DFSp[v] << "\t\t\t\t" << DFSd[v] << endl;
@@ -208,7 +210,7 @@ void Dijkstra(graph &G, vertex sv, ofstream &fout)
       }
   } while (mdv < vn);
 
-  fout << "\nDistances from starting vertex " << sv << endl;
+  fout << "Distances from starting vertex " << sv << endl;
   for (vertex v = 0; v < vn; ++v)
     if (Dd[v] < infty)
       fout << v << "\t" << Dd[v] << endl;
