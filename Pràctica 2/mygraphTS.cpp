@@ -222,3 +222,45 @@ void Dijkstra (graph &G, vertex sv, ofstream &fout)
       fout << v << "\tNot connected" << endl;
 
 }
+
+//
+//  Minimal chess graph path lengths by Dijkstra's method to stream
+//  - Distances to all vertices: lengths of minimal paths
+//
+void chess_Dijkstra(graph &G, index n1, index n2, index s1, index s2, ofstream &fout)
+{
+  vertex vn = G.size();
+  vector<bool> Dl(vn, false);
+
+  length infty = UINT_MAX;
+  vector<length> Dd(vn, infty);
+
+  vertex sv = s1*n2 + s2;
+  Dd[sv] = 0;
+
+  vertex mdv = sv;
+  do {
+    Dl[mdv] = true;
+
+    for (index i = 0; i < G[mdv].size(); ++i)
+      if (Dd[G[mdv][i]] > Dd[mdv]+1)
+        Dd[G[mdv][i]] = Dd[mdv] + 1;
+
+    length md = infty;
+    mdv = vn;
+    for (vertex v = 0; v < vn; ++v)
+      if (md > Dd[v] && !Dl[v]) {
+        md = Dd[v];
+        mdv = v;
+      }
+  } while (mdv < vn);
+
+  fout << "Distances matrix from starting square (" << sv/n2 << "," << sv%n2 <<
+    ")" << endl;
+  for (index i1 = 0; i1 < n1; ++i1) {
+      for (index i2 = 0; i2 < n2; ++i2)
+          fout << Dd[i1*n2 + i2] << "\t";
+      fout << endl;
+  }
+
+}

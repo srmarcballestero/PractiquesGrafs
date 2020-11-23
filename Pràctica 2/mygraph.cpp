@@ -155,6 +155,60 @@ graph graph_rook(index n1, index n2)
 //
 // Knight graph in n1xn2 chessboard: Ktn1n2.
 //
+graph graph_knight(index n1, index n2)
+{
+  graph Ktn1n2(n1*n2);
+
+  for (index i1 = 0; i1 < n1; ++i1)
+    for (index i2 = 0; i2 < n2; ++i2) {
+      vertex v = i1*n2 + i2;
+
+      if (i1 < n1-1 && i2 < n2-2) {
+          Ktn1n2[v].push_back(v+n2+2);
+          Ktn1n2[v+n2+2].push_back(v);
+      }
+      if (i1 < n1-1 && i2 > 1) {
+          Ktn1n2[v].push_back(v+ n2-2);
+          Ktn1n2[v+n2-2].push_back(v);
+      }
+      if (i1 < n1-2 && i2 < n2-1) {
+          Ktn1n2[v].push_back(v + 2*n2 + 1);
+          Ktn1n2[v + 2*n2 + 1].push_back(v);
+      }
+      if (i1 < n1-2 && i2 > 0) {
+          Ktn1n2[v].push_back(v + 2*n2 - 1);
+          Ktn1n2[v + 2*n2 - 1 ].push_back(v);
+      }
+    }
+
+  return Ktn1n2;
+}
+
+//
+// Bishop graph in n1xn2 chessboard: Bpn1n2
+//
+graph graph_bishop(index n1, index n2)
+{
+  graph Bpn1n2(n1*n2);
+
+  for (index i1 = 0; i1 < n1; ++i1)
+    for (index i2 = 0; i2 < n2; ++i2) {
+      vertex v = i1*n2 + i2;
+
+      for (index k = 1; i1+k < n1 && i2+k < n2; ++k) {
+          Bpn1n2[v].push_back(v + k*n2 + k);
+          Bpn1n2[v + k*n2 + k].push_back(v);
+      }
+      for (index k = 1; i1+k < n1 && i2 > k-1; ++k) {
+          Bpn1n2[v].push_back(v + k*n2 - k);
+          Bpn1n2[v + k*n2 - k].push_back(v);
+      }
+    }
+
+  return Bpn1n2;
+}
+
+
 //
 // Read from file fname of edges to adjacencies lists.
 //
@@ -217,4 +271,49 @@ void graph_write(graph &G, ofstream &fout)
       if (v <= G[v][i])
         fout << v << "-" << G[v][i] << endl;
 
+}
+
+//
+// Write chess graph from adjacencies lists to stream
+//
+void chess_graph_write(graph &G, index n1, index n2, ofstream &fout)
+{
+  vertex vn = G.size();
+
+  edge en = 0;
+  for (vertex v = 0; v < vn; ++v) {
+    en += G[v].size();
+    for (index i = 0; i < G[v].size(); ++i)
+      if (G[v][i] == v)
+        ++en;
+  }
+  en /= 2;
+
+  fout << "Graph with " << vn << " vertices and " << en << " edges " << endl;
+
+  fout << "Adjacencies lists" << endl;
+  for (vertex v = 0; v < vn; ++v) {
+    fout << "(" << v/n2 << ", " << v%n2 << ")" << "\t:";
+    for (index i = 0; i < G[v].size(); ++i)
+      fout << "\t" << "(" << G[v][i]/n2 << ", " << G[v][i]%n2 << ")";
+    fout << endl;
+  }
+
+  fout << endl << "Edges" << endl;
+  for (index i1 = 0; i1 < n1; ++i1)
+    for (index i2 = 0; i2 < n2; ++i2) {
+      vertex v = i1*n2 + i2;
+      for (index k = 0; k < G[v].size(); ++k)
+        if (v < G[v][k] + 1)
+          fout << "(" << i1 << "," << i2 << ")" << "-" << "(" << G[v][k]/n2 <<
+            "," << G[v][k]%n2 << ")" << endl;
+    }
+
+  fout << endl << "Degrees matrix" << endl;
+  for (index i1 = 0; i1 < n1; ++i1) {
+      for (index i2 = 0; i2 < n2; ++i2)
+          fout << G[i1*n2 + i2].size() << "\t";
+      fout << endl;
+  }
+  
 }

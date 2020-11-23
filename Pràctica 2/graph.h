@@ -21,6 +21,7 @@ graph graph_wheel(index n);
 graph graph_king(index n1, index n2);
 graph graph_rook(index n1, index n2);
 graph graph_knight(index n1, index n2);
+graph graph_bishop(index n1, index n2);
 graph graph_read(string fname);
 void graph_write(graph& G, ofstream& fout);
 void chess_graph_write(graph& G, index n1, index n2, ofstream& fout);
