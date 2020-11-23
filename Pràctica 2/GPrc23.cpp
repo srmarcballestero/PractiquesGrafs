@@ -593,5 +593,37 @@ int main()
   chess_Dijkstra(Kt6_6, 6, 6, 2, 0, fout);
   fout.close();
 
+  //
+  // CITY GRAPHS
+  //
+
+  // cities1.out
+  fout.open("cities1.out");
+  wgraph WGC1 = wgraph_read("cities1.in");
+  fout << endl << "KRUSKAL" << endl;
+  fout << KruskalTrees(WGC1, fout) << " is the total weight of the minimal trees by Kruskal";
+  fout << endl;
+  fout << endl << "PRIM" << endl;
+  fout << PrimTrees(WGC1, fout) << " is the total weight of the minimal trees by Prim";
+  fout << endl;
+  fout.close();
+
+  // cities2.out
+  fout.open("cities2.out");
+  wgraph WGC2 = wgraph_read("cities2.in");
+  fout << endl << "KRUSKAL" << endl;
+  fout << KruskalTrees(WGC2, fout) << " is the total weight of the minimal trees by Kruskal";
+  fout << endl;
+  fout << endl << "PRIM" << endl;
+  fout << PrimTrees(WGC2, fout) << " is the total weight of the minimal trees by Prim";
+  fout << endl;
+  fout.close();
+
+  //
+  // ENDING
+  //
+  cout << endl << "Press enter to finish...";
+  cin.get();
+
   return 0;
 }
