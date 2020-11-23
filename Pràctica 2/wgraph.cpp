@@ -11,7 +11,7 @@
 //
 wgraph wgraph_complete(index n, weight Mw)
 {
-  vertex vn = 0;
+  vertex vn = n;
   wgraph WKn(vn);
 
   for (vertex v = 0; v < vn; ++v)
@@ -123,9 +123,10 @@ wgraph wgraph_read(string fname)
 
   vertex vn;
   edge en;
-  wgraph WG(vn);
 
   fin >> vn >> en;
+
+  wgraph WG(vn);
 
   for (edge e = 0; e < en; ++e) {
     vertex u, v;

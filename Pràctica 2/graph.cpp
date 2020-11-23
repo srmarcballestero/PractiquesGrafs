@@ -223,9 +223,10 @@ graph graph_read (string fname)
 
   vertex vn;
   edge en;
-  graph G(vn);
 
   fin >> vn >> en;
+
+  graph G(vn);
 
   for (edge e = 0; e < en; ++e) {
     vertex v, u;
@@ -315,5 +316,5 @@ void chess_graph_write(graph &G, index n1, index n2, ofstream &fout)
           fout << G[i1*n2 + i2].size() << "\t";
       fout << endl;
   }
-  
+
 }

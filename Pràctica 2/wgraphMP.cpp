@@ -144,17 +144,20 @@ void Dijkstra_Tree(wgraph &G, vertex sv, ofstream &fout)
   vertex vn = G.size();
   vector<bool> Dl(vn, false);
   vector<vertex> Dp(vn, vn);
+  Dp[sv] = sv;
 
   weight infty = UINT_MAX;
   vector<weight> Dd(vn, infty);
-  Dd[sv] = sv;
+  Dd[sv] = 0;
 
   vertex mdv = sv;
   do {
     Dl[mdv] = true;
     for (index i = 0; i < G[mdv].size(); ++i)
-      if (Dd[G[mdv][i].first] > Dd[mdv] + G[mdv][i].second)
-        Dd[G[mdv][i].first] = mdv;
+      if (Dd[G[mdv][i].first] > Dd[mdv] + G[mdv][i].second) {
+        Dd[G[mdv][i].first] = Dd[mdv] + G[mdv][i].second;
+        Dp[G[mdv][i].first] = mdv;
+      }
 
     weight md = infty;
     mdv = vn;
@@ -178,7 +181,7 @@ void Dijkstra_Tree(wgraph &G, vertex sv, ofstream &fout)
     if (Dp[v] < vn) {
       vertex pv = v;
       while (pv != sv) {
-        pv = Dp[sv];
+        pv = Dp[pv];
         fout << "-" << pv;
       }
       fout << endl;
