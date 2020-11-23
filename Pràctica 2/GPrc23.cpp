@@ -115,7 +115,7 @@ int main()
   fout.open("wgraph0.out");
   wgraph WG0 = wgraph_read("wgraph0.in");
   wgraph_write(WG0, fout);
-  fout << "Distance between first and last vertex: ";
+  fout << endl << "Distance between first and last vertex: ";
   d = Dijkstra(WG0, 0, WG0.size()-1);
   if (d == infty)
     fout << "undefined" << endl;
@@ -126,7 +126,7 @@ int main()
     fout << "undefined" << endl;
   else
     fout << d << endl;
-  fout << "Distances from first vertex to all accessible vertices: " << endl;
+  fout << endl << "Distances from first vertex to all accessible vertices: ";
   Dijkstra(WG0, 0, fout);
   fout << endl << "Diameter: ";
   D = Diameter(WG0);
@@ -134,7 +134,7 @@ int main()
     fout << "undefined." << endl;
   else
     fout << D << endl;
-  fout << "Paths from all vertices reachable from vertex 0: " << endl;
+  fout << endl << "Paths from all vertices reachable from vertex 0: ";
   Dijkstra_Tree(WG0, 0, fout);
   fout << endl;
   fout.close();

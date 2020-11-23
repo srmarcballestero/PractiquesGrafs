@@ -168,13 +168,6 @@ void Dijkstra_Tree(wgraph &G, vertex sv, ofstream &fout)
       }
   } while (mdv < vn);
 
-  fout << "\nDistances from starting vertex " << sv << endl;
-  for (vertex v = 0; v < vn; ++v)
-    if (Dd[v] < infty)
-      fout << v << "\t" << Dd[v] << endl;
-    else
-      fout << v << "\tNot connected" << endl;
-
   fout << endl << "Minimal paths:" << endl;
   for (vertex v = 0; v < vn; ++v) {
     fout << v;
