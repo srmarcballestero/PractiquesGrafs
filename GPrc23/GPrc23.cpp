@@ -152,6 +152,7 @@ int main()
   else
     fout << d << endl;
   fout << "Maximum distance from first vertex: ";
+  d = Dijkstra(WK10, 0);
   if (d == infty)
     fout << "undefined" << endl;
   else
@@ -185,6 +186,7 @@ int main()
   else
     fout << d << endl;
   fout << "Maximum distance from first vertex: ";
+  d = Dijkstra(WK6_4, 0);
   if (d == infty)
     fout << "undefined" << endl;
   else
@@ -218,6 +220,7 @@ int main()
   else
     fout << d << endl;
   fout << "Maximum distance from first vertex: ";
+  d = Dijkstra(WK4_6, 0);
   if (d == infty)
     fout << "undefined" << endl;
   else
@@ -251,6 +254,7 @@ int main()
   else
     fout << d << endl;
   fout << "Maximum distance from first vertex: ";
+  d = Dijkstra(WC10, 0);
   if (d == infty)
     fout << "undefined" << endl;
   else
@@ -284,6 +288,7 @@ int main()
   else
     fout << d << endl;
   fout << "Maximum distance from first vertex: ";
+  d = Dijkstra(WS10, 0);
   if (d == infty)
     fout << "undefined" << endl;
   else
@@ -317,6 +322,7 @@ int main()
   else
     fout << d << endl;
   fout << "Maximum distance from first vertex: ";
+  d = Dijkstra(WW10, 0);
   if (d == infty)
     fout << "undefined" << endl;
   else
@@ -350,6 +356,7 @@ int main()
   else
     fout << d << endl;
   fout << "Maximum distance from first vertex: ";
+  d = Dijkstra(WG0, 0);
   if (d == infty)
     fout << "undefined" << endl;
   else
@@ -383,6 +390,7 @@ int main()
   else
     fout << d << endl;
   fout << "Maximum distance from first vertex: ";
+  d = Dijkstra(WG1, 0);
   if (d == infty)
     fout << "undefined" << endl;
   else
@@ -416,6 +424,7 @@ int main()
   else
     fout << d << endl;
   fout << "Maximum distance from first vertex: ";
+  d = Dijkstra(WG2, 0);
   if (d == infty)
     fout << "undefined" << endl;
   else
@@ -444,6 +453,7 @@ int main()
   else
     fout << d << endl;
   fout << "Maximum distance from first vertex: ";
+  d = Dijkstra(WG3, 0);
   if (d == infty)
     fout << "undefined" << endl;
   else
@@ -477,6 +487,7 @@ int main()
   else
     fout << d << endl;
   fout << "Maximum distance from first vertex: ";
+  d = Dijkstra(WG322, 0);
   if (d == infty)
     fout << "undefined" << endl;
   else
@@ -505,6 +516,7 @@ int main()
   else
     fout << d << endl;
   fout << "Maximum distance from first vertex: ";
+  d = Dijkstra(WD, 0);
   if (d == infty)
     fout << "undefined" << endl;
   else
@@ -538,6 +550,7 @@ int main()
   else
     fout << d << endl;
   fout << "Maximum distance from first vertex: ";
+  d = Dijkstra(WI, 0);
   if (d == infty)
     fout << "undefined" << endl;
   else
