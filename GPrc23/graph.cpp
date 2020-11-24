@@ -140,13 +140,11 @@ graph graph_rook(index n1, index n2)
       for (int k = 1; i2+k < n2; ++k) {
         Krn1n2[v].push_back(v+k);
         Krn1n2[v+k].push_back(v);
-        ++k;
       }
 
       for (int k = 1; i1+k < n1; ++k) {
         Krn1n2[v].push_back(v + k*n2);
         Krn1n2[v + k*n2].push_back(v);
-        ++k;
       }
     }
 

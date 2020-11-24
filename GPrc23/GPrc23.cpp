@@ -595,14 +595,14 @@ int main()
 
   // Bishop 6x6 graph Bp6_6: distances from (2,0)
   fout.open("Bp6_6.out");
-  graph Bp6_6 = graph_king(6, 6);
+  graph Bp6_6 = graph_bishop(6, 6);
   chess_graph_write(Bp6_6, 6, 6, fout);
   chess_Dijkstra(Bp6_6, 6, 6, 2, 0, fout);
   fout.close();
 
   // Knight 6x6 graph Kt6_6: distances from (2,0)
   fout.open("Kt6_6.out");
-  graph Kt6_6 = graph_king(6, 6);
+  graph Kt6_6 = graph_knight(6, 6);
   chess_graph_write(Kt6_6, 6, 6, fout);
   chess_Dijkstra(Kt6_6, 6, 6, 2, 0, fout);
   fout.close();
