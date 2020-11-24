@@ -11,7 +11,8 @@
 //      escriure els programes.
 //    - Com que edito desde Linux, els salts de línia són del tipus LF i no
 //      CRLF, la qual cosa no sé si pot portar algun problema a l'hora de
-//      visualitzar el codi.
+//      visualitzar el codi. Els fitxers *.in sí que mantenen els salts tipus
+//      Windows.
 //    - Als fitxers de sortida, les distàncies que el programa escriu com "n/d"
 //      són aquelles que no estan definides (not defined), en general perquè
 //      els grafs no són connexos.
