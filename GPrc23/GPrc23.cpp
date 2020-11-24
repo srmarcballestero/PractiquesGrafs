@@ -574,7 +574,6 @@ int main()
   fout << endl;
   fout.close();
 
-
   //
   // CHESSBOARD GRAPHS
   //
