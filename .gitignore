@@ -38,3 +38,8 @@
 *.zip
 *.tar.*
 *.7z
+
+# Visual Studio files
+*.sln
+*.vcxproj
+*.vcxproj.filters

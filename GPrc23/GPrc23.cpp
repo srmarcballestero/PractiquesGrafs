@@ -2,6 +2,19 @@
 // GRUP: M1a.
 // DATA d'ENTREGA: 28/11/2020.
 
+//  NOTES:
+//    - Vist que compilo mitjançant g++, he hagut d'incloure la llibreria
+//      climits als fitxers de capçalera *.h per a compilar el programa.
+//    - Així mateix, els fitxers *.sln, *.vcxproj i *.vcxproj.filters no
+//      s'han modificat perquè no disposo del Visual Studio Community per
+//      escriure els programes.
+//    - Com que edito desde Linux, els salts de línia són del tipus LF i no
+//      CRLF, la qual cosa no sé si pot portar algun problema a l'hora de
+//      visualitzar el codi.
+//    - Als fitxers de sortida, les distàncies que el programa escriu com "n/d"
+//      són aquelles que no estan definides (not defined), en general perquè
+//      els grafs no són connexos.
+
 
 #include <ctime>
 #include "graph.h"
@@ -149,13 +162,13 @@ int main()
   fout << endl << "Distance between first and last vertex: ";
   d = Dijkstra(WK10, 0, WK10.size()-1);
   if (d == infty)
-    fout << "undefined" << endl;
+    fout << "n/d" << endl;
   else
     fout << d << endl;
   fout << "Maximum distance from first vertex: ";
   d = Dijkstra(WK10, 0);
   if (d == infty)
-    fout << "undefined" << endl;
+    fout << "n/d" << endl;
   else
     fout << d << endl;
   fout << endl << "Distances from first vertex to all accessible vertices: ";
@@ -163,7 +176,7 @@ int main()
   fout << endl << "Diameter: ";
   d = Diameter(WK10);
   if (d == infty)
-    fout << "undefined." << endl;
+    fout << "n/d." << endl;
   else
     fout << d << endl;
   fout << endl << "Paths from all vertices reachable from vertex 0: ";
@@ -183,13 +196,13 @@ int main()
   fout << endl << "Distance between first and last vertex: ";
   d = Dijkstra(WK6_4, 0, WK6_4.size()-1);
   if (d == infty)
-    fout << "undefined" << endl;
+    fout << "n/d" << endl;
   else
     fout << d << endl;
   fout << "Maximum distance from first vertex: ";
   d = Dijkstra(WK6_4, 0);
   if (d == infty)
-    fout << "undefined" << endl;
+    fout << "n/d" << endl;
   else
     fout << d << endl;
   fout << endl << "Distances from first vertex to all accessible vertices: ";
@@ -197,7 +210,7 @@ int main()
   fout << endl << "Diameter: ";
   d = Diameter(WK6_4);
   if (d == infty)
-    fout << "undefined." << endl;
+    fout << "n/d." << endl;
   else
     fout << d << endl;
   fout << endl << "Paths from all vertices reachable from vertex 0: ";
@@ -217,13 +230,13 @@ int main()
   fout << endl << "Distance between first and last vertex: ";
   d = Dijkstra(WK4_6, 0, WK4_6.size()-1);
   if (d == infty)
-    fout << "undefined" << endl;
+    fout << "n/d" << endl;
   else
     fout << d << endl;
   fout << "Maximum distance from first vertex: ";
   d = Dijkstra(WK4_6, 0);
   if (d == infty)
-    fout << "undefined" << endl;
+    fout << "n/d" << endl;
   else
     fout << d << endl;
   fout << endl << "Distances from first vertex to all accessible vertices: ";
@@ -231,7 +244,7 @@ int main()
   fout << endl << "Diameter: ";
   d = Diameter(WK4_6);
   if (d == infty)
-    fout << "undefined." << endl;
+    fout << "n/d." << endl;
   else
     fout << d << endl;
   fout << endl << "Paths from all vertices reachable from vertex 0: ";
@@ -251,13 +264,13 @@ int main()
   fout << endl << "Distance between first and last vertex: ";
   d = Dijkstra(WC10, 0, WC10.size()-1);
   if (d == infty)
-    fout << "undefined" << endl;
+    fout << "n/d" << endl;
   else
     fout << d << endl;
   fout << "Maximum distance from first vertex: ";
   d = Dijkstra(WC10, 0);
   if (d == infty)
-    fout << "undefined" << endl;
+    fout << "n/d" << endl;
   else
     fout << d << endl;
   fout << endl << "Distances from first vertex to all accessible vertices: ";
@@ -265,7 +278,7 @@ int main()
   fout << endl << "Diameter: ";
   d = Diameter(WC10);
   if (d == infty)
-    fout << "undefined." << endl;
+    fout << "n/d." << endl;
   else
     fout << d << endl;
   fout << endl << "Paths from all vertices reachable from vertex 0: ";
@@ -285,13 +298,13 @@ int main()
   fout << endl << "Distance between first and last vertex: ";
   d = Dijkstra(WS10, 0, WS10.size()-1);
   if (d == infty)
-    fout << "undefined" << endl;
+    fout << "n/d" << endl;
   else
     fout << d << endl;
   fout << "Maximum distance from first vertex: ";
   d = Dijkstra(WS10, 0);
   if (d == infty)
-    fout << "undefined" << endl;
+    fout << "n/d" << endl;
   else
     fout << d << endl;
   fout << endl << "Distances from first vertex to all accessible vertices: ";
@@ -299,7 +312,7 @@ int main()
   fout << endl << "Diameter: ";
   d = Diameter(WS10);
   if (d == infty)
-    fout << "undefined." << endl;
+    fout << "n/d." << endl;
   else
     fout << d << endl;
   fout << endl << "Paths from all vertices reachable from vertex 0: ";
@@ -319,13 +332,13 @@ int main()
   fout << endl << "Distance between first and last vertex: ";
   d = Dijkstra(WW10, 0, WW10.size()-1);
   if (d == infty)
-    fout << "undefined" << endl;
+    fout << "n/d" << endl;
   else
     fout << d << endl;
   fout << "Maximum distance from first vertex: ";
   d = Dijkstra(WW10, 0);
   if (d == infty)
-    fout << "undefined" << endl;
+    fout << "n/d" << endl;
   else
     fout << d << endl;
   fout << endl << "Distances from first vertex to all accessible vertices: ";
@@ -333,7 +346,7 @@ int main()
   fout << endl << "Diameter: ";
   d = Diameter(WW10);
   if (d == infty)
-    fout << "undefined." << endl;
+    fout << "n/d." << endl;
   else
     fout << d << endl;
   fout << endl << "Paths from all vertices reachable from vertex 0: ";
@@ -353,13 +366,13 @@ int main()
   fout << endl << "Distance between first and last vertex: ";
   d = Dijkstra(WG0, 0, WG0.size()-1);
   if (d == infty)
-    fout << "undefined" << endl;
+    fout << "n/d" << endl;
   else
     fout << d << endl;
   fout << "Maximum distance from first vertex: ";
   d = Dijkstra(WG0, 0);
   if (d == infty)
-    fout << "undefined" << endl;
+    fout << "n/d" << endl;
   else
     fout << d << endl;
   fout << endl << "Distances from first vertex to all accessible vertices: ";
@@ -367,7 +380,7 @@ int main()
   fout << endl << "Diameter: ";
   d = Diameter(WG0);
   if (d == infty)
-    fout << "undefined." << endl;
+    fout << "n/d." << endl;
   else
     fout << d << endl;
   fout << endl << "Paths from all vertices reachable from vertex 0: ";
@@ -387,13 +400,13 @@ int main()
   fout << endl << "Distance between first and last vertex: ";
   d = Dijkstra(WG1, 0, WG1.size()-1);
   if (d == infty)
-    fout << "undefined" << endl;
+    fout << "n/d" << endl;
   else
     fout << d << endl;
   fout << "Maximum distance from first vertex: ";
   d = Dijkstra(WG1, 0);
   if (d == infty)
-    fout << "undefined" << endl;
+    fout << "n/d" << endl;
   else
     fout << d << endl;
   fout << endl << "Distances from first vertex to all accessible vertices: ";
@@ -401,7 +414,7 @@ int main()
   fout << endl << "Diameter: ";
   d = Diameter(WG1);
   if (d == infty)
-    fout << "undefined." << endl;
+    fout << "n/d." << endl;
   else
     fout << d << endl;
   fout << endl << "Paths from all vertices reachable from vertex 0: ";
@@ -421,13 +434,13 @@ int main()
   fout << endl << "Distance between first and last vertex: ";
   d = Dijkstra(WG2, 0, WG2.size()-1);
   if (d == infty)
-    fout << "undefined" << endl;
+    fout << "n/d" << endl;
   else
     fout << d << endl;
   fout << "Maximum distance from first vertex: ";
   d = Dijkstra(WG2, 0);
   if (d == infty)
-    fout << "undefined" << endl;
+    fout << "n/d" << endl;
   else
     fout << d << endl;
   fout << endl << "Distances from first vertex to all accessible vertices: ";
@@ -435,7 +448,7 @@ int main()
   fout << endl << "Diameter: ";
   d = Diameter(WG2);
   if (d == infty)
-    fout << "undefined." << endl;
+    fout << "n/d." << endl;
   else
     fout << d << endl;
   fout << endl << "Paths from all vertices reachable from vertex 0: ";
@@ -450,13 +463,13 @@ int main()
   fout << endl << "Distance between first and last vertex: ";
   d = Dijkstra(WG3, 0, WG3.size()-1);
   if (d == infty)
-    fout << "undefined" << endl;
+    fout << "n/d" << endl;
   else
     fout << d << endl;
   fout << "Maximum distance from first vertex: ";
   d = Dijkstra(WG3, 0);
   if (d == infty)
-    fout << "undefined" << endl;
+    fout << "n/d" << endl;
   else
     fout << d << endl;
   fout << endl << "Distances from first vertex to all accessible vertices: ";
@@ -464,7 +477,7 @@ int main()
   fout << endl << "Diameter: ";
   d = Diameter(WG3);
   if (d == infty)
-    fout << "undefined." << endl;
+    fout << "n/d." << endl;
   else
     fout << d << endl;
   fout << endl << "Paths from all vertices reachable from vertex 0: ";
@@ -484,13 +497,13 @@ int main()
   fout << endl << "Distance between first and last vertex: ";
   d = Dijkstra(WG322, 0, WG322.size()-1);
   if (d == infty)
-    fout << "undefined" << endl;
+    fout << "n/d" << endl;
   else
     fout << d << endl;
   fout << "Maximum distance from first vertex: ";
   d = Dijkstra(WG322, 0);
   if (d == infty)
-    fout << "undefined" << endl;
+    fout << "n/d" << endl;
   else
     fout << d << endl;
   fout << endl << "Distances from first vertex to all accessible vertices: ";
@@ -498,7 +511,7 @@ int main()
   fout << endl << "Diameter: ";
   d = Diameter(WG322);
   if (d == infty)
-    fout << "undefined." << endl;
+    fout << "n/d." << endl;
   else
     fout << d << endl;
   fout << endl << "Paths from all vertices reachable from vertex 0: ";
@@ -513,13 +526,13 @@ int main()
   fout << endl << "Distance between first and last vertex: ";
   d = Dijkstra(WD, 0, WD.size()-1);
   if (d == infty)
-    fout << "undefined" << endl;
+    fout << "n/d" << endl;
   else
     fout << d << endl;
   fout << "Maximum distance from first vertex: ";
   d = Dijkstra(WD, 0);
   if (d == infty)
-    fout << "undefined" << endl;
+    fout << "n/d" << endl;
   else
     fout << d << endl;
   fout << endl << "Distances from first vertex to all accessible vertices: ";
@@ -527,7 +540,7 @@ int main()
   fout << endl << "Diameter: ";
   d = Diameter(WD);
   if (d == infty)
-    fout << "undefined." << endl;
+    fout << "n/d." << endl;
   else
     fout << d << endl;
   fout << endl << "Paths from all vertices reachable from vertex 0: ";
@@ -547,13 +560,13 @@ int main()
   fout << endl << "Distance between first and last vertex: ";
   d = Dijkstra(WI, 0, WI.size()-1);
   if (d == infty)
-    fout << "undefined" << endl;
+    fout << "n/d" << endl;
   else
     fout << d << endl;
   fout << "Maximum distance from first vertex: ";
   d = Dijkstra(WI, 0);
   if (d == infty)
-    fout << "undefined" << endl;
+    fout << "n/d" << endl;
   else
     fout << d << endl;
   fout << endl << "Distances from first vertex to all accessible vertices: ";
@@ -561,7 +574,7 @@ int main()
   fout << endl << "Diameter: ";
   d = Diameter(WI);
   if (d == infty)
-    fout << "undefined." << endl;
+    fout << "n/d." << endl;
   else
     fout << d << endl;
   fout << endl << "Paths from all vertices reachable from vertex 0: ";
