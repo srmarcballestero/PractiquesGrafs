@@ -2,8 +2,8 @@
 // GRUP: M1a.
 // DATA d'ENTREGA: 28/11/2020.
 
-#include "graph.h"
 
+#include "graph.h"
 
 //
 // Complete graph with vn vertices to adjacencies lists.

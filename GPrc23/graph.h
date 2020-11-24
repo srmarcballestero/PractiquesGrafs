@@ -1,3 +1,8 @@
+// NOM: Marc Ballestero Ribó.
+// GRUP: M1a.
+// DATA d'ENTREGA: 28/11/2020.
+
+
 #include <iostream>
 #include <fstream>
 #include <vector>
@@ -23,11 +28,11 @@ graph graph_rook(index n1, index n2);
 graph graph_knight(index n1, index n2);
 graph graph_bishop(index n1, index n2);
 graph graph_read(string fname);
-void graph_write(graph& G, ofstream& fout);
-void chess_graph_write(graph& G, index n1, index n2, ofstream& fout);
+void graph_write(graph &G, ofstream &fout);
+void chess_graph_write(graph &G, index n1, index n2, ofstream &fout);
 component BFS(graph &G);
 component DFS(graph &G);
-void Dijkstra(graph &G, vertex sv, ofstream& fout);
-void chess_Dijkstra(graph& G, index n1, index n2, index i1, index i2, ofstream& fout);
-component BFS_Trees(graph& G, ofstream& fout);
-component DFS_Trees(graph& G, ofstream& fout);
+void Dijkstra(graph &G, vertex sv, ofstream &fout);
+void chess_Dijkstra(graph &G, index n1, index n2, index i1, index i2, ofstream &fout);
+component BFS_Trees(graph &G, ofstream &fout);
+component DFS_Trees(graph &G, ofstream &fout);

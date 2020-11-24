@@ -2,6 +2,7 @@
 // GRUP: M1a.
 // DATA d'ENTREGA: 28/11/2020.
 
+
 #include <ctime>
 #include "graph.h"
 #include "wgraph.h"

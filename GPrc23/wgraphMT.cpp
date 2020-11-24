@@ -2,8 +2,8 @@
 // GRUP: M1a.
 // DATA d'ENTREGA: 28/11/2020.
 
-#include "wgraph.h"
 
+#include "wgraph.h"
 
 weight KruskalTrees(wgraph &G, ofstream &fout)
 {
