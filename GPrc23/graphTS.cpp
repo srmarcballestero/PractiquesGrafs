@@ -135,7 +135,7 @@ void DFS_Trees(graph &G, index &DFSn, vector<index> &DFSind, vector<vertex> &DFS
   for (index i = 0; i < G[v].size(); ++i)
     if (DFSp[G[v][i]] == vn) {
       DFSp[G[v][i]] = v;
-      DFSind[G[v][i]] = ++DFSn;
+      DFSind[G[v][i]] = DFSn++;
       DFSd[G[v][i]] = DFSd[v] + 1;
       DFS_Trees(G, DFSn, DFSind, DFSp, DFSd, G[v][i]);
     }
@@ -158,7 +158,7 @@ component DFS_Trees(graph &G, ofstream &fout)
     if (DFSp[rv] == vn) {
       ++Tn;
       DFSp[rv] = rv;
-      DFSind[rv] = ++DFSn;
+      DFSind[rv] = DFSn++;
       DFSd[rv] = 0;
       DFS_Trees(G, DFSn, DFSind, DFSp, DFSd, rv);
     }
@@ -256,6 +256,9 @@ void chess_Dijkstra(graph &G, index n1, index n2, index s1, index s2, ofstream &
     ")" << endl;
   for (index i1 = 0; i1 < n1; ++i1) {
       for (index i2 = 0; i2 < n2; ++i2)
+        if (Dd[i1*n2 + i2] == infty)
+          fout << "n/d" << "\t";
+        else
           fout << Dd[i1*n2 + i2] << "\t";
       fout << endl;
   }
