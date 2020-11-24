@@ -4,7 +4,8 @@
 
 //  NOTES:
 //    - Vist que compilo mitjançant g++, he hagut d'incloure la llibreria
-//      climits als fitxers de capçalera *.h per a compilar el programa.
+//      climits als fitxers de capçalera *.h per a poder fer servir la
+//      constant UINT_MAX.
 //    - Així mateix, els fitxers *.sln, *.vcxproj i *.vcxproj.filters no
 //      s'han modificat perquè no disposo del Visual Studio Community per
 //      escriure els programes.
