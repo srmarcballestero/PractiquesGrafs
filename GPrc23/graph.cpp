@@ -40,6 +40,7 @@ graph graph_bipartite_complete (index n1, index n2)
 
 //
 // Cycle graph with vn vertices to adjacencies lists.
+//
 graph graph_cycle (index n)
 {
   vertex vn = n;
