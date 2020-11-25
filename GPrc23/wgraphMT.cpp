@@ -131,6 +131,12 @@ weight PrimTrees (wgraph &G, ofstream &fout)
         fout << u << " ";
 
     fout << "\tWeight: " << Pw[v] << endl;
+
+    // REVISAR
+    fout << "Weighted edges:" << endl;
+    for (vertex u = 1; u < vn; ++u)
+      if (PT[u] == v)
+        fout << u << "-" << Pp[u] << " [" << Pw[u] << "]" << endl;
   }
 
   for (vertex v = 0; v < vn; ++v)
