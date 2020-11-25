@@ -125,13 +125,20 @@ weight PrimTrees (wgraph &G, ofstream &fout)
   } while(true);
 
   for (component v = 0; v < Tn; ++v) {
-    fout << "Component of vertex " << v << ": ";
+    fout << "Component #" << v << ": ";
     for (vertex u = 0; u < vn; ++u)
       if (PT[u] == v)
         fout << u << " ";
 
     fout << "\tWeight: " << Pw[v] << endl;
   }
+
+  for (vertex v = 0; v < vn; ++v)
+    if (PT[v] == infty) {
+      fout << "Component #" << Tn << ": " << v << " [0]" << endl;
+      ++Tn;
+    }
+
 
   return Tw;
 }
