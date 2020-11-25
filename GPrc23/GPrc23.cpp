@@ -455,6 +455,11 @@ int main()
     fout << d << endl;
   fout << endl << "Paths from all vertices reachable from vertex 0: ";
   Dijkstra_Tree(WG2, 0, fout);
+  fout << endl << "KRUSKAL" << endl;
+  fout << KruskalTrees(WG2, fout) << " is the total weight of the minimal trees by Kruskal";
+  fout << endl;
+  fout << endl << "PRIM" << endl;
+  fout << PrimTrees(WG2, fout) << " is the total weight of the minimal trees by Prim";
   fout << endl;
   fout.close();
 
@@ -518,7 +523,13 @@ int main()
     fout << d << endl;
   fout << endl << "Paths from all vertices reachable from vertex 0: ";
   Dijkstra_Tree(WG322, 0, fout);
+  fout << endl << "KRUSKAL" << endl;
+  fout << KruskalTrees(WG322, fout) << " is the total weight of the minimal trees by Kruskal";
   fout << endl;
+  fout << endl << "PRIM" << endl;
+  fout << PrimTrees(WG322, fout) << " is the total weight of the minimal trees by Prim";
+  fout << endl;
+  fout.close();
   fout.close();
 
   // Dodecahedron: WD.out

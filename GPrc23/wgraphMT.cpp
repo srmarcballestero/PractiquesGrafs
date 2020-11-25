@@ -63,7 +63,7 @@ weight PrimTrees (wgraph &G, ofstream &fout)
   vertex vn = G.size();
   weight infty = UINT_MAX;
   vector<vertex> Pp(vn, vn);
-  vector<component> PT(vn);
+  vector<component> PT(vn, infty);
   vector<weight> Pw(vn, 0);
   weight Tw = 0;
   component Tn = 0;
