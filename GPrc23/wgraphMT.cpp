@@ -135,8 +135,10 @@ weight PrimTrees (wgraph &G, ofstream &fout)
     fout << "Edges:" << endl;
     for (vertex u = 0; u < vn; ++u)
         for (vertex v = u; v < vn; ++v)
-          if ((u == Pp[v] || v == Pp[u]) && u != v && PT[u] == Ti)
-            fout << u << "-" << v << endl;
+          for (index i = 0; i < vn; ++i)
+            if ((u == Pp[v] || v == Pp[u]) && u != v && PT[u] == Ti)
+              if (G[u][i].first == v)
+                fout << u << "-" << v << " [" << G[u][i].second << "]" << endl;
   }
 
   for (vertex v = 0; v < vn; ++v)
