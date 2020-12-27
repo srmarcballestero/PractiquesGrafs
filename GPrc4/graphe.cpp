@@ -203,4 +203,17 @@ void graphe_write(graph &G, edges &GE, ofstream &fout)
       if (v < G[v][i])
         ++en;
 
+  fout << "Graph with " << vn << " vertices and " << en << " edges" << endl;
+  fout << "Adjacencies lists" << endl;
+  for (vertex v = 0; v < vn; ++v) {
+    fout << v << "\t:";
+    for (index i = 0; i < G[v].size(); ++i)
+      fout << "\t" << G[v][i] << " (" << GE[vip(v, i)] << ") " << endl;
+    fout << endl;
+  }
+  fout << "Edges" << endl;
+  for (vertex v = 0; v < vn; ++v)
+    for (index i = 0; i < G[v].size(); ++i)
+      fout << v << " " << G[v][i] << endl;
+
 }

@@ -7,12 +7,16 @@
 #include <fstream>
 #include <vector>
 #include <algorithm>
+#include <climits>
 
 using namespace std;
 
 typedef unsigned int vertex;
 typedef unsigned int edge;
 typedef unsigned int index;
+typedef unsigned int degree;
+typedef unsigned int component;
+typedef unsigned int length;
 typedef unsigned int color;
 typedef vector<vector<vertex>> graph;
 

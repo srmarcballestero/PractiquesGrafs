@@ -28,4 +28,5 @@ color MinimalVertexColoring(graph &G, vector<color> &Gc, ofstream &fout);
 color MinimalEdgeColoring(graph &G, edges &GE, ofstream &fout);
 color LeagueSchedule(graph &G, edges &GE, vector<string> teams, ofstream &fout);
 vector<string> Teams(index n);
+component BFS(graph &G);
 bool Hierholzer(graph &G, edges &GE, ostream &fout);
