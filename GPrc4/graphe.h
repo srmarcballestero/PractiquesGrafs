@@ -26,4 +26,6 @@ void graphe_read(graph &G, edges &GE, string fname);
 void graphe_write(graph &G, edges &GE, ofstream &fout);
 color MinimalVertexColoring(graph &G, vector<color> &Gc, ofstream &fout);
 color MinimalEdgeColoring(graph &G, edges &GE, ofstream &fout);
+color LeagueSchedule(graph &G, edges &GE, vector<string> teams, ofstream &fout);
+vector<string> Teams(index n);
 bool Hierholzer(graph &G, edges &GE, ostream &fout);
