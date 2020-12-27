@@ -7,7 +7,6 @@
 #include <fstream>
 #include <vector>
 #include <algorithm>
-#include <climits>
 
 using namespace std;
 
@@ -16,6 +15,7 @@ typedef unsigned int edge;
 typedef unsigned int index;
 typedef unsigned int color;
 typedef vector<vector<vertex>> graph;
+
 graph graph_complete(index n);
 graph graph_bipartite_complete(index n1, index n2);
 graph graph_cycle(index n);

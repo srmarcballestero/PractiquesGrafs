@@ -3,7 +3,6 @@
 // DATA d'ENTREGA: 13/01/2021.
 
 #include "graph.h"
-#include "wgraph.h"
 
 //
 //  Robert and Flores method for a hamiltonian cycle.

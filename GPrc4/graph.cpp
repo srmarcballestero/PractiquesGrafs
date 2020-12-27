@@ -128,30 +128,6 @@ graph graph_knight(index n1, index n2)
   return Ktn1n2;
 }
 
-//
-// Bishop graph in n1xn2 chessboard: Bpn1n2
-//
-graph graph_bishop(index n1, index n2)
-{
-  graph Bpn1n2(n1*n2);
-
-  for (index i1 = 0; i1 < n1; ++i1)
-    for (index i2 = 0; i2 < n2; ++i2) {
-      vertex v = i1*n2 + i2;
-
-      for (index k = 1; i1+k < n1 && i2+k < n2; ++k) {
-          Bpn1n2[v].push_back(v + k*n2 + k);
-          Bpn1n2[v + k*n2 + k].push_back(v);
-      }
-      for (index k = 1; i1+k < n1 && i2 > k-1; ++k) {
-          Bpn1n2[v].push_back(v + k*n2 - k);
-          Bpn1n2[v + k*n2 - k].push_back(v);
-      }
-    }
-
-  return Bpn1n2;
-}
-
 
 //
 // Read from file fname of edges to adjacencies lists.
