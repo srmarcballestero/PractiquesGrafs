@@ -7,7 +7,7 @@
 //
 //  Robert and Flores method for hamiltonian cycles in weighted graphs.
 //
-index HamiltonianCycles (wgraph &G, ofstream &fout)
+index HamiltonianCycles(wgraph &G, ofstream &fout)
 {
   vertex vn = G.size();
   weight HCw = 0;
@@ -64,7 +64,7 @@ index HamiltonianCycles (wgraph &G, ofstream &fout)
 //
 //  Travelling Salesman Problem for weighted graphs.
 //
-weight TravellingSalsemanProblem(wgraph &G, ofstream &fout)
+weight TravellingSalesmanProblem(wgraph &G, ofstream &fout)
 {
   vertex vn = G.size();
   weight mHCw = UINT_MAX;
@@ -126,7 +126,7 @@ weight TravellingSalsemanProblem(wgraph &G, ofstream &fout)
       else {
         fout << "The TSP cannot be solved for this graph." << endl;
       }
-
+      fout << endl;
       return mHCw;
     }
 

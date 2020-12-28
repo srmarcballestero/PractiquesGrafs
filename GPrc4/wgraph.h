@@ -8,6 +8,8 @@
 #include <algorithm>
 #include <climits>
 
+#include "graph.h"
+
 using namespace std;
 
 typedef unsigned int vertex;
@@ -23,5 +25,6 @@ wgraph wgraph_star(index n, weight Mw);
 wgraph wgraph_wheel(index n, weight Mw);
 wgraph wgraph_read(string fname);
 void wgraph_write(wgraph &G, ofstream &fout);
+graph WgraphToGraph(wgraph &WG);
 index HamiltonianCycles(wgraph &G, ofstream &fout);
-weight TravellingSalsemanProblem(wgraph &G, ofstream &fout);
+weight TravellingSalesmanProblem(wgraph &G, ofstream &fout);

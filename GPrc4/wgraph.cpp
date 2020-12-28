@@ -4,6 +4,7 @@
 
 
 #include "wgraph.h"
+#include "graph.h"
 
 //
 //  Weighted complete graph with vn vertices and random weights up to Mw
@@ -170,5 +171,21 @@ void wgraph_write(wgraph &WG, ofstream &fout)
     for (index i = 0; i < WG[v].size(); ++i)
       if (v <= WG[v][i].first)
         fout << v << "-" << WG[v][i].first << "[" << WG[v][i].second << "] " << endl;
+  fout << endl;
 
+}
+
+//
+//  Return unweighted graph associate to weighted graph
+//
+graph WgraphToGraph(wgraph &WG)
+{
+  vertex vn = WG.size();
+  graph G(vn);
+
+  for (vertex v = 0; v < vn; ++v)
+    for (index i = 0; i < WG[v].size(); ++i)
+      G[v].push_back(WG[v][i].first);
+
+  return G;
 }
