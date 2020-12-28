@@ -247,9 +247,9 @@ int main()
   fout.close();
 
   // League graph
-  fout.open("LG.out");
   cout << "--- League Graphs ---" << endl;
-  for (index n = 4; n < 12; n += 2) {
+  for (index n = 4; n < 15; n += 2) {
+    fout.open("league" + to_string(n) + ".out");
     fout << "League of " << n << " teams" << endl;
     cout << "League of " << n << " teams" << endl;
     graph LG;
@@ -259,9 +259,8 @@ int main()
     vector<string> teams = Teams(n);
     color cn = LeagueSchedule(LG, LGE, teams, fout);
     cout << "Number of match days: " << cn << endl << endl;
+    fout.close();
   }
-  fout.close();
-
 
 
 
@@ -289,7 +288,23 @@ int main()
   fout.close();
 
   //WKn1n2
-  //...
+  fout.open("WKn1n2.out");
+  cout << endl << "--- Weighted Bipartite Complete Graphs WKn1,n2 ---" << endl;
+  for (index n = 3; n < 9; ++n)
+    for (index n2 = 1; n2 <= n/2; ++n2) {
+      index n1 = n-n2;
+      wgraph WKn1n2 = wgraph_bipartite_complete(n1, n2, W_MAX);
+      cout << "WK" << n1 << "," << n2 << endl;
+      fout << "WK_" << n1 << "_" << n2 << endl;
+      wgraph_write(WKn1n2, fout);
+      mw = TravellingSalesmanProblem(WKn1n2, fout);
+      if (mw < UINT_MAX)
+        cout << "TSP solution for WK" << n1 << "," << n2 << " has weight " << mw << endl;
+      else
+        cout << "WK" << n1 << "," << n2 << "is not hamiltonian, so TSP cannot be solved." << endl;
+      cout << endl;
+  }
+  fout.close();
 
   // WCn
   fout.open("WCn.out");
@@ -303,7 +318,7 @@ int main()
     if (mw < UINT_MAX)
       cout << "TSP solution for WC" << n << " has weight " << mw << endl;
     else
-      cout << "WC" << n << "is not hamiltonian, so TSP cannot be solved." << endl;
+      cout << "WC" << n << " is not hamiltonian, so TSP cannot be solved." << endl;
     cout << endl;
   }
   fout.close();
