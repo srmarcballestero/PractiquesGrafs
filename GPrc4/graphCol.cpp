@@ -56,14 +56,14 @@ color MinimalVertexColoring(graph &G, vector<color> &Gc, ofstream &fout)
   color cn = BrelazColoring(G, Gpc);
 
   do {
-    fout << "\nColoring with " << cn << " colors:" << endl;
+    fout << "Coloring with " << cn << " colors:" << endl;
     cout << "Coloring with " << cn << " colors." << endl;
 
     Gc = Gpc;
     for (vertex v = 0; v < vn; ++v)
       fout << v << "\t" << Gc[v] << endl;
 
-    for (color cv = 0; cv < cn+1; ++cv) {
+    for (color cv = 1; cv < cn+1; ++cv) {
       fout << "Color #" << cv << " : ";
       for (vertex v = 0; v < vn; ++v)
         if (Gc[v] == cv)
@@ -80,7 +80,7 @@ color MinimalVertexColoring(graph &G, vector<color> &Gc, ofstream &fout)
       do {
         --cnv;
         if (cnv == 0) {
-          fout << "\nMinimal vertex coloring found with " << cn << " colors." << endl;
+          fout << "Minimal vertex coloring found with " << cn << " colors." << endl << endl;
           return cn;
         }
         Vertex1Coloring(G, Gpc, cn, cnv, Gpc[cnv]+1);
@@ -107,25 +107,30 @@ color MinimalEdgeColoring(graph &G, edges &GE, ofstream &fout)
   vector<color> LGc;
   edges LGE;
   line_graphe(G, GE, LG, LGE);
+
+  fout << "Associate line graph:" << endl;
   graphe_write(LG, LGE, fout);
 
-  fout << "Edge coloring:" << endl;
+  fout << "Line graph vertex coloring:" << endl;
   cout << "Edge coloring." << endl;
 
   color ecn = MinimalVertexColoring(LG, LGc, fout);
   vertex vn = G.size();
+  fout << "Edge coloring:" << endl;
+  fout << "Edge\t\t" << "Color" << endl;
   for (vertex v = 0; v < vn; ++v)
     for (index i = 0; i < G[v].size(); ++i)
       if (v < G[v][i])
-        fout << v << "\t" << G[v][i] << "\t(" << GE[vip(v, i)] << ")\t" << LGc[GE[vip(v, i)]] << endl;
+        fout << v << "-" << G[v][i] << "(" << GE[vip(v, i)] << ")" << "\t" << LGc[GE[vip(v, i)]] << endl;
 
   for (color ec = 1; ec < ecn+1; ++ec) {
-    fout << "Color #" << ec << " : " << endl;
+    fout << "Color #" << ec << ":" << endl;
     for (vertex v = 0; v < vn; ++v)
       for (index i = 0; i < G[v].size(); ++i)
         if (v < G[v][i] && LGc[GE[vip(v, i)]] == ec)
-          fout << v << " - " << G[v][i] << "\t(" << GE[vip(v, i)] << ")\t" << endl;
+          fout << v << "-" << G[v][i] << " (" << GE[vip(v, i)] << ")\t" << endl;
   }
+  fout << endl;
 
   return ecn;
 }

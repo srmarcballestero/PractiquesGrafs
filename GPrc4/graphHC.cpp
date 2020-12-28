@@ -93,8 +93,10 @@ index HamiltonianCycles(graph &G, ofstream &fout)
     }
 
     --HCi;
-    if (HCi == 0)
+    if (HCi == 0) {
+      fout << endl;
       return HCn;
+    }
 
     HCl[v] = false;
     ind[v] = 0;

@@ -14,12 +14,12 @@ bool Hierholzer(graph &G, edges &GE, ofstream &fout)
 
   for (vertex v = 0; v < vn; ++v)
     if (G[v].size() % 2) {
-      fout << "Vertex " << v << " has odd rdegree, so the graph is not eulerian." << endl;
+      fout << "Vertex " << v << " has odd degree, so the graph is not eulerian." << endl << endl;
       return false;
     }
 
   if (BFS(G) > 1) {
-    fout << "Graph is not connected, so it is not eulerian." << endl;
+    fout << "Graph is not connected, so it is not eulerian." << endl << endl;
     return false;
   }
 
@@ -71,7 +71,7 @@ bool Hierholzer(graph &G, edges &GE, ofstream &fout)
   fout << "Eulerian circuit: " << endl;
   for (i = 0; i < ei; ++i)
     fout << ECv[i] << "-";
-  fout << ECv[en] << endl;
+  fout << ECv[en] << endl << endl;
 
   return true;
 }

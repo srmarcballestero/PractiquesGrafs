@@ -52,21 +52,16 @@ void graphe_cycle(graph &Cn, edges &CnE, index n)
   edge e = 0;
 
   CnE[vip(0, 0)] = e;
-  CnE[vip(1, 0)] = e++;
-  Cn[0].push_back(1);
-  Cn[1].push_back(0);
+  CnE[vip(vn-1, 0)] = e++;
+  Cn[0].push_back(vn-1);
+  Cn[vn-1].push_back(0);
 
   for (vertex v = 1; v < vn-1; ++v) {
-    CnE[vip(v, 1)] = e;
-    CnE[vip(v+1, 0)] = e++;
+    CnE[vip(v, Cn[v].size())] = e;
+    CnE[vip(v+1, Cn[v+1].size())] = e++;
     Cn[v].push_back(v+1);
     Cn[v+1].push_back(v);
   }
-
-  CnE[vip(vn-1, 1)] = e;
-  CnE[vip(0,1)] = e++;
-  Cn[vn-1].push_back(0);
-  Cn[0].push_back(vn-1);
 
 }
 
@@ -81,7 +76,7 @@ void graphe_star(graph &Sn, edges &SnE, index n)
 
   for (vertex v = 0; v < vn-1; ++v) {
     SnE[vip(v, Sn[v].size())] = e;
-    SnE[vip(vn-1, Sn[v].size())] = e++;
+    SnE[vip(vn-1, Sn[vn-1].size())] = e++;
     Sn[v].push_back(vn-1);
     Sn[vn-1].push_back(v);
   }
@@ -104,7 +99,7 @@ void graphe_wheel(graph &Wn, edges &WnE, index n)
     Wn[0].push_back(v);
   }
 
-  for (vertex v = 1; v < vn; ++v) {
+  for (vertex v = 1; v < vn-1; ++v) {
     WnE[vip(v, Wn[v].size())] = e;
     WnE[vip(v+1, Wn[v+1].size())] = e++;
     Wn[v].push_back(v+1);
@@ -204,16 +199,16 @@ void graphe_write(graph &G, edges &GE, ofstream &fout)
         ++en;
 
   fout << "Graph with " << vn << " vertices and " << en << " edges" << endl;
-  fout << "Adjacencies lists" << endl;
+  fout << "Adjacencies lists:" << endl;
   for (vertex v = 0; v < vn; ++v) {
     fout << v << "\t:";
     for (index i = 0; i < G[v].size(); ++i)
-      fout << "\t" << G[v][i] << " (" << GE[vip(v, i)] << ") " << endl;
+      fout << "\t" << G[v][i] << " (" << GE[vip(v, i)] << ") ";
     fout << endl;
   }
-  fout << "Edges" << endl;
+  fout << "Edges:" << endl;
   for (vertex v = 0; v < vn; ++v)
     for (index i = 0; i < G[v].size(); ++i)
-      fout << v << " " << G[v][i] << endl;
-
+      fout << v << "-" << G[v][i] << " (" << GE[vip(v, i)] << ")" << endl;
+  fout << endl;
 }
