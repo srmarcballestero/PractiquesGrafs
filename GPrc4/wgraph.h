@@ -10,6 +10,8 @@
 
 #include "graph.h"
 
+#define W_MAX 9
+
 using namespace std;
 
 typedef unsigned int vertex;

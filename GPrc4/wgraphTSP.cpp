@@ -117,8 +117,8 @@ weight TravellingSalesmanProblem(wgraph &G, ofstream &fout)
 
     --HCi;
     if (HCi == 0) {
-      if (mHCn) {
-        fout << "TSP solution: ";
+      if (HCn) {
+        fout << endl << "TSP solution (#" << mHCn << " hamiltonian cycle): ";
         for (index mHCj = 0; mHCj < vn; ++mHCj)
           fout << mHCv[mHCj] << "-";
         fout << "0 " << "[" << mHCw << "]" << endl;

@@ -153,14 +153,15 @@ color LeagueSchedule(graph &G, edges &GE, vector<string> teams, ofstream &fout)
 
   fout << "Schedule:" << endl;
   for (color ec = 1; ec < ecn+1; ++ec) {
-    fout << "Match day #" << ec << endl;
+    fout << "Match day #" << ec << ":" << endl;
     for (vertex v = 0; v < G.size(); ++v)
       for (index i = 0; i < G[v].size(); ++i)
         if (v < G[v][i]) {
-          if (LGc[GE[vip(v, i)]] == GE[vip(v, i)]) {
+          if (LGc[GE[vip(v, i)]] == ec) {
             fout << teams[v] << " vs. " << teams[G[v][i]] << endl;
           }
         }
+    fout << endl;
   }
 
   return ecn;
@@ -174,16 +175,17 @@ vector<string> Teams(index n)
   vector<string> teams(14);
   vector<string> nTeams(n);
 
-  teams[0] = "Tuvalu Mandrills";
-  teams[1] = "Bhutan Wildcats";
+  teams[0] = "New Caledonia Mandrills";
+  teams[1] = "Prussia Raccoons";
+  teams[2] = "Carolingian Sloths";
   teams[3] = "Belarus Gnus";
   teams[4] = "North Korea Bears";
   teams[5] = "Alaska Beavers";
   teams[6] = "Atlantis Seahorses";
   teams[7] = "Mars Hedgehogs";
-  teams[8] = "Guinea pigs";
+  teams[8] = "New Guinea Guinea Pigs";
   teams[9] = "East Germany Capuchins";
-  teams[10] = "Prussia Raccoons";
+  teams[10] = "Bhutan Wildcats";
   teams[11] = "Antarctic Red foxes";
   teams[12] = "Wuhan Pangolins";
   teams[13] = "Ottoman Lizards";

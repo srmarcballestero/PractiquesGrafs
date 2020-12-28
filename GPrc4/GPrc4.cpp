@@ -14,6 +14,10 @@ int main()
   ofstream fout;
   srand(time(NULL));
 
+  //
+  // UNWEIGHTED GRAPHS
+  //
+
   // Kn
   fout.open("Kn.out");
   cout << endl << "--- Complete Graphs Kn ---" << endl;
@@ -21,7 +25,7 @@ int main()
     graph Kn;
     edges KnE;
     cout << "K" << n << endl;
-    fout << "C_" << n << endl;
+    fout << "K_" << n << endl;
     graphe_complete(Kn, KnE, n);
     graphe_write(Kn, KnE, fout);
     if (HamiltonianCycle(Kn, fout))
@@ -182,10 +186,6 @@ int main()
     }
   fout.close();
 
-
-  // CATALONIA
-  // ...
-
   // E1
   fout.open("E1.out");
   cout << "--- Input Graph E1.in ---" << endl;
@@ -199,6 +199,7 @@ int main()
   else
     cout << "E1 is not eulerian." << endl;
   cout << endl;
+  fout.close();
 
   // E2
   fout.open("E2.out");
@@ -213,6 +214,7 @@ int main()
   else
     cout << "E2 is not eulerian." << endl;
   cout << endl;
+  fout.close();
 
   // E3
   fout.open("E3.out");
@@ -227,6 +229,7 @@ int main()
   else
     cout << "E3 is not eulerian." << endl;
   cout << endl;
+  fout.close();
 
   // E4
   fout.open("E4.out");
@@ -241,9 +244,118 @@ int main()
   else
     cout << "E4 is not eulerian." << endl;
   cout << endl;
+  fout.close();
 
+  // League graph
+  fout.open("LG.out");
+  cout << "--- League Graphs ---" << endl;
+  for (index n = 4; n < 12; n += 2) {
+    fout << "League of " << n << " teams" << endl;
+    cout << "League of " << n << " teams" << endl;
+    graph LG;
+    edges LGE;
+    graphe_complete(LG, LGE, n);
+    graphe_write(LG, LGE, fout);
+    vector<string> teams = Teams(n);
+    color cn = LeagueSchedule(LG, LGE, teams, fout);
+    cout << "Number of match days: " << cn << endl << endl;
+  }
+  fout.close();
+
+
+
+
+  //
+  // WEIGHTED GRAPHS
+  //
 
   weight mw;
+
+  // WKn
+  fout.open("WKn.out");
+  cout << endl << "--- Weighted Complete Graphs WKn ---" << endl;
+  for (index n = 3; n < 9; ++n) {
+    wgraph WKn = wgraph_complete(n, W_MAX);
+    cout << "WK" << n << endl;
+    fout << "WK_" << n << endl;
+    wgraph_write(WKn, fout);
+    mw = TravellingSalesmanProblem(WKn, fout);
+    if (mw < UINT_MAX)
+      cout << "TSP solution for WK" << n << " has weight " << mw << endl;
+    else
+      cout << "WK" << n << "is not hamiltonian, so TSP cannot be solved." << endl;
+    cout << endl;
+  }
+  fout.close();
+
+  //WKn1n2
+  //...
+
+  // WCn
+  fout.open("WCn.out");
+  cout << endl << "--- Weighted Cycle Graphs WCn ---" << endl;
+  for (index n = 3; n < 9; ++n) {
+    wgraph WCn = wgraph_cycle(n, W_MAX);
+    cout << "WC" << n << endl;
+    fout << "WC_" << n << endl;
+    wgraph_write(WCn, fout);
+    mw = TravellingSalesmanProblem(WCn, fout);
+    if (mw < UINT_MAX)
+      cout << "TSP solution for WC" << n << " has weight " << mw << endl;
+    else
+      cout << "WC" << n << "is not hamiltonian, so TSP cannot be solved." << endl;
+    cout << endl;
+  }
+  fout.close();
+
+  // WSn
+  fout.open("WSn.out");
+  cout << endl << "--- Weighted Star Graphs WSn ---" << endl;
+  for (index n = 3; n < 9; ++n) {
+    wgraph WSn = wgraph_star(n, W_MAX);
+    cout << "WS" << n << endl;
+    fout << "WS_" << n << endl;
+    wgraph_write(WSn, fout);
+    mw = TravellingSalesmanProblem(WSn, fout);
+    if (mw < UINT_MAX)
+      cout << "TSP solution for WS" << n << " has weight " << mw << endl;
+    else
+      cout << "WS" << n << "is not hamiltonian, so TSP cannot be solved." << endl;
+    cout << endl;
+  }
+  fout.close();
+
+  // WWn
+  fout.open("WWn.out");
+  cout << endl << "--- Weighted Wheel Graphs WWn ---" << endl;
+  for (index n = 3; n < 9; ++n) {
+    wgraph WWn = wgraph_wheel(n, W_MAX);
+    cout << "WW" << n << endl;
+    fout << "WW_" << n << endl;
+    wgraph_write(WWn, fout);
+    mw = TravellingSalesmanProblem(WWn, fout);
+    if (mw < UINT_MAX)
+      cout << "TSP solution for WW" << n << " has weight " << mw << endl;
+    else
+      cout << "WW" << n << "is not hamiltonian, so TSP cannot be solved." << endl;
+    cout << endl;
+  }
+  fout.close();
+
+
+  // Cities graph
+  fout.open("cities.out");
+  cout << "--- Cities Graph ---" << endl;
+  wgraph WC = wgraph_read("cities.in");
+  wgraph_write(WC, fout);
+  mw = TravellingSalesmanProblem(WC, fout);
+  if (mw < UINT_MAX)
+    cout << "TSP solution for the cities graph has weight " << mw << endl;
+  else
+    cout << "The cities graph is not hamiltonian, so TSP cannot be solved." << endl;
+  cout << endl;
+  fout.close();
+
 
   // Dodecahedron
   fout.open("D.out");
