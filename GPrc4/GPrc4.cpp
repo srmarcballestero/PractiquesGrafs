@@ -248,7 +248,7 @@ int main()
 
   // League graph
   cout << "--- League Graphs ---" << endl;
-  for (index n = 4; n < 14; n += 2) {
+  for (index n = 4; n < 15; n += 2) {
     fout.open("league" + to_string(n) + ".out");
     fout << "League of " << n << " teams" << endl;
     cout << "League of " << n << " teams" << endl;
