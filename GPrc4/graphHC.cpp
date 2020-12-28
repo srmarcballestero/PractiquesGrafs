@@ -44,7 +44,7 @@ bool HamiltonianCycle (graph &G, ofstream &fout)
 
     --HCi;
     if (HCi == 0)
-      return 0;
+      return false;
 
     HCl[v] = false;
     ind[v] = 0;

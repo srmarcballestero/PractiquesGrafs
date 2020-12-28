@@ -30,5 +30,5 @@ graph graph_read(string fname);
 void graph_write(graph &G, ofstream &fout);
 void chess_graph_write(graph &G, index n1, index n2, ofstream &fout);
 bool HamiltonianCycle(graph &G, ofstream &fout);
-index HamiltonianCycles(graph &G, vector<color> &Gc, ofstream &fout);
+index HamiltonianCycles(graph &G, ofstream &fout);
 color MinimalVertexColoring(graph &G, vector<color> &Gc, ofstream &fout);
