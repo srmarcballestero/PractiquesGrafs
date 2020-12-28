@@ -248,7 +248,7 @@ int main()
 
   // League graph
   cout << "--- League Graphs ---" << endl;
-  for (index n = 4; n < 15; n += 2) {
+  for (index n = 4; n < 14; n += 2) {
     fout.open("league" + to_string(n) + ".out");
     fout << "League of " << n << " teams" << endl;
     cout << "League of " << n << " teams" << endl;
@@ -262,6 +262,16 @@ int main()
     fout.close();
   }
 
+  // Catalonia graph
+  fout.open("catalonia.out");
+  cout << "--- Regions of Catalonia graph ---" << endl;
+  graph CG = graph_read("catalonia.in");
+  graph_write(CG, fout);
+  vector<color> CGc;
+  fout << "Vertex coloring:" << endl;
+  cout << "Vertex coloring." << endl;
+  cout << MinimalVertexColoring(CG, CGc, fout) << " required colors for the regions of Catalonia." << endl << endl;
+  fout.close();
 
 
   //
@@ -282,7 +292,7 @@ int main()
     if (mw < UINT_MAX)
       cout << "TSP solution for WK" << n << " has weight " << mw << endl;
     else
-      cout << "WK" << n << "is not hamiltonian, so TSP cannot be solved." << endl;
+      cout << "WK" << n << " is not hamiltonian, so TSP cannot be solved." << endl;
     cout << endl;
   }
   fout.close();
@@ -335,7 +345,7 @@ int main()
     if (mw < UINT_MAX)
       cout << "TSP solution for WS" << n << " has weight " << mw << endl;
     else
-      cout << "WS" << n << "is not hamiltonian, so TSP cannot be solved." << endl;
+      cout << "WS" << n << " is not hamiltonian, so TSP cannot be solved." << endl;
     cout << endl;
   }
   fout.close();
@@ -352,7 +362,7 @@ int main()
     if (mw < UINT_MAX)
       cout << "TSP solution for WW" << n << " has weight " << mw << endl;
     else
-      cout << "WW" << n << "is not hamiltonian, so TSP cannot be solved." << endl;
+      cout << "WW" << n << " is not hamiltonian, so TSP cannot be solved." << endl;
     cout << endl;
   }
   fout.close();
