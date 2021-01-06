@@ -2,6 +2,22 @@
 // GRUP: M1a.
 // DATA d'ENTREGA: 13/01/2021.
 
+// NOTES:
+// - Vist que compilo mitjançant g++, he hagut d'incloure la llibreria
+// climits als fitxers de capçalera *.h per a poder fer servir la
+// constant UINT_MAX.
+// - Així mateix, els fitxers *.sln, *.vcxproj i *.vcxproj.filters no
+// s'han modificat perquè no disposo del Visual Studio Community per
+// escriure els programes.
+// - Com que edito desde Linux, els salts de línia són del tipus LF i no
+// CRLF, la qual cosa no sé si pot portar algun problema a l'hora de
+// visualitzar el codi. Els fitxers *.in sí que mantenen els salts tipus
+// Windows.
+// - S'ha escrit la funció addicional graph WgraphToGraph(wgraph &WG);, amb
+// capçalera en wgraph.h, per tal de convertir els grafs ponderats
+// WD.in i WI.in (el dodecàedre i l'icosàedre) a format de grafs sense
+// ponderació, per evitar haver d'incloure dos fitxers d'entrada nous.
+
 
 #include <ctime>
 
