@@ -52,16 +52,21 @@ void graphe_cycle(graph &Cn, edges &CnE, index n)
   edge e = 0;
 
   CnE[vip(0, 0)] = e;
-  CnE[vip(vn-1, 0)] = e++;
-  Cn[0].push_back(vn-1);
-  Cn[vn-1].push_back(0);
+  CnE[vip(1, 0)] = e++;
+  Cn[0].push_back(1);
+  Cn[1].push_back(0);
 
   for (vertex v = 1; v < vn-1; ++v) {
-    CnE[vip(v, Cn[v].size())] = e;
-    CnE[vip(v+1, Cn[v+1].size())] = e++;
+    CnE[vip(v, 1)] = e;
+    CnE[vip(v+1, 0)] = e++;
     Cn[v].push_back(v+1);
     Cn[v+1].push_back(v);
   }
+
+  CnE[vip(vn-1, 1)] = e;
+  CnE[vip(0, 1)] = e++;
+  Cn[vn-1].push_back(0);
+  Cn[0].push_back(vn-1);
 
 }
 
@@ -209,6 +214,7 @@ void graphe_write(graph &G, edges &GE, ofstream &fout)
   fout << "Edges:" << endl;
   for (vertex v = 0; v < vn; ++v)
     for (index i = 0; i < G[v].size(); ++i)
-      fout << v << "-" << G[v][i] << " (" << GE[vip(v, i)] << ")" << endl;
+      if (v <= G[v][i])
+        fout << v << "-" << G[v][i] << " (" << GE[vip(v, i)] << ")" << endl;
   fout << endl;
 }

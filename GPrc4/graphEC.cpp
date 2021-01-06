@@ -69,8 +69,10 @@ bool Hierholzer(graph &G, edges &GE, ofstream &fout)
 
   fout << "The graph is eulerian." << endl;
   fout << "Eulerian circuit: " << endl;
-  for (i = 0; i < ei; ++i)
-    fout << ECv[i] << "-";
+  for (index i = 0; i < en; ++i)
+    for (index j = 0; j < G[ECv[i]].size(); ++j)
+      if (G[ECv[i]][j] == ECv[i+1])
+        fout << ECv[i] << "-(" << GE[vip(ECv[i], j)] << ")-";
   fout << ECv[en] << endl << endl;
 
   return true;
